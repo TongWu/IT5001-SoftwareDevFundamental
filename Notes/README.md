@@ -1,0 +1,1 @@
+The note folder content will be synced with the main page’s README
