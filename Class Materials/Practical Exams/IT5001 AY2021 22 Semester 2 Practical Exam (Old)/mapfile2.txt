@@ -1,0 +1,10 @@
+CountryA 21 6 17
+3 capitalB
+6 deadend
+8 capitalB
+12 capitalB
+15 6 33 12
+17 15 8 33
+21 3 29 15
+29 capitalB
+33 deadend
