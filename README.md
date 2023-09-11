@@ -1,5 +1,7 @@
 # IT5001 - Software Development Fundamentals
 
+> This is the self-written note for IT5001, revision and orgnization use only
+
 ## 1. Introductions
 
 ### 1.1 Software Development
