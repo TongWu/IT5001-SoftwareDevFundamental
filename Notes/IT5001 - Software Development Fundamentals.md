@@ -1,8 +1,14 @@
 # IT5001 - Software Development Fundamentals
 
-> This is the self-written note for IT5001, revision and orgnization use only
-
 ## 0. Introductions
+
+### 0.0 Disclaimer and illustrations
+
+- This is the self-written note for National University of Singapore, School of Computing, Course IT5001: Software Development Fundamentals. The materials and referrals used in this note are for revision and organization use only
+
+- > The content and knowledge in this block means which is not in the slides of this course. The understanding for it is optional and not pre-qualified.
+
+- The most of the content used in this material are referred from the National University of Singapore. Few of contents in the block as mentioned before, are referred from the University of Manchester, Columbia University, website or self-organized. Do not share the 
 
 ### 0.1 Software Development
 
@@ -628,7 +634,9 @@ print(z)
 >
 > 对于第二段函数，该函数取决于输入参数`x`和外部参数`y`。所以他不是一个pure function
 
-## 3. Selections and Loops
+## 3. Control Structure (Selections and Loops)
+
+![image-20230912205854358](https://images.wu.engineer/images/2023/09/12/image-20230912205854358.png)
 
 
 
