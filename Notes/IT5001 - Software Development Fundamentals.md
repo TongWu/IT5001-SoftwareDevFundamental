@@ -839,7 +839,174 @@ done
 
 ## 4. Functions Scope and Recursion
 
+### 4.1 Scope
 
+#### 4.1.1 Global & Local Variables
+
+- A variable which is defined in the main body of a file is called a **global variable**. It will be **visible throughout the file**, and also inside any file which imports that file
+- A variable which is defined inside a function is **local** to that function. It is accessible **from the point at which it is defined until the end of the function**, and exists for as long as the function is executing
+- The parameter names in the function definition behave like local variables, but they contain the values that we pass into the function when we call it.
+
+```python
+a = 2
+b = 3 # Global variables
+def hello():
+    a = 4
+    b = 5 # Local variables
+```
+
+![image-20230913001120532](https://images.wu.engineer/images/2023/09/12/image-20230913001120532.png)
+
+##### Global Variable
+
+![image-20230913001202988](https://images.wu.engineer/images/2023/09/12/image-20230913001202988.png)
+
+##### Global Variable vs. Local Variable
+
+![image-20230913001239224](https://images.wu.engineer/images/2023/09/12/image-20230913001239224.png)
+
+![image-20230913001314239](https://images.wu.engineer/images/2023/09/12/image-20230913001314239.png)
+
+#### 4.1.2 Crossing Boundary (change global variable in the function)
+
+- Use `global` keyword to pass the global variable into the function
+
+```python
+x = 0
+def foo():
+	global x
+	x = 999
+	print(x)
+
+foo()
+print(x)
+
+# Output:
+999
+999
+```
+
+```python
+x = 0
+def foo():
+	print(x) # This will throw an ERROR, since no local variable called `x`
+	x = 999
+	print(x)
+
+foo()
+```
+
+### 4.2 Generator Functions
+
+![image-20230913001719005](https://images.wu.engineer/images/2023/09/12/image-20230913001719005.png)
+
+#### 4.2.1 Return vs. Yield
+
+- With `return` statement:
+  - State is not retained after the function returns the value
+- With `yield` statement:
+  - State of the function is retained between the calls
+  - Can have many `yield` statements in sequence
+
+> `return` 和 `yield ` 的主要区别：
+>
+> 1. **函数类型**:
+>    - **return** 用在普通的函数中，这些函数被称为“函数”（functions）。
+>    - **yield** 用在生成器中，这些函数被称为“生成器函数”（generator functions）。
+> 2. **返回值**:
+>    - 使用 **return** 的函数返回一个单一的值（这可以是任何数据类型，如整数、字符串、列表、字典等）。
+>    - 使用 **yield** 的函数返回一个生成器对象，这个对象可以用于迭代，每次迭代都返回一个值。
+> 3. **执行流程**:
+>    - 当函数遇到 **return** 时，它会返回一个值，并且函数的执行结束。下次再调用这个函数时，它会从头开始执行。
+>    - 当生成器函数遇到 **yield** 时，它会返回一个值，并“暂停”函数的执行，而不是结束它。下次再迭代生成器时，它会从上次暂停的地方继续执行，而不是从头开始。
+> 4. **内存效率**:
+>    - 生成器（使用 **yield**）在处理大量数据时特别有用，因为它们是在每次迭代时产生一个值，而不是一次性产生所有的值并存储在内存中。这对于大数据流和懒加载序列特别有用。
+>
+> ```python
+> def generate_numbers(n):
+>     for i in range(n):
+>         yield i
+>         
+> for number in generate_numbers(5):
+>     print(number)
+>     
+> # Output:
+> 0
+> 1
+> 2
+> 3
+> 4
+> ```
+
+![image-20230913002243050](https://images.wu.engineer/images/2023/09/12/image-20230913002243050.png)
+
+### 4.3 Calling Other Functions
+
+```python
+def hypotenuse(a,b):
+	return sqrt((a*a) + (b*b))
+```
+
+```python
+def hypotenuse(a, b):
+	return sqrt(sum_of_squares(a,b))
+	
+def sum_of_squares(x, y):
+	return square(x) + square(y)
+	
+def square(x):
+	return x*x
+```
+
+- Two examples above are equilibrium.
+- The order of enter and exit the function follows the principle of heap
+
+#### 4.3.1 Stack
+
+![image-20230913002638704](https://images.wu.engineer/images/2023/09/12/image-20230913002638704.png)
+
+![image-20230913002643679](https://images.wu.engineer/images/2023/09/12/image-20230913002643679.png)
+
+![image-20230913002704069](https://images.wu.engineer/images/2023/09/12/image-20230913002704069.png)
+
+![image-20230913002711167](https://images.wu.engineer/images/2023/09/12/image-20230913002711167.png)
+
+#### 4.3.2 Namespaces
+
+![image-20230913010918426](https://images.wu.engineer/images/2023/09/12/image-20230913010918426.png)
+
+![image-20230913010928747](https://images.wu.engineer/images/2023/09/12/image-20230913010928747.png)
+
+> When the function is executed and returned the result value, the namespace of this function will be vanished.
+
+### 4.4 Recursion
+
+- A function that calls itself
+
+- Solve a big problem by solving a smaller version of itself
+
+  - > Divide and conquer
+
+#### 4.4.1 Recursive Function
+
+- Function calls itself
+
+```python
+def factorial(n):
+	if n==1:
+		return 1
+	else:
+		return n*fractorial(n-1) # Calling itself
+print(fractorial(4))
+```
+
+![image-20230913011204651](https://images.wu.engineer/images/2023/09/12/image-20230913011204651.png)
+
+#### 4.4.2 Namespaces
+
+![image-20230913011227729](https://images.wu.engineer/images/2023/09/12/image-20230913011227729.png)
+
+![image-20230913011236255](https://images.wu.engineer/images/2023/09/12/image-20230913011236255.png)
 
 ## 5. Recursion VS. Iteration
 
