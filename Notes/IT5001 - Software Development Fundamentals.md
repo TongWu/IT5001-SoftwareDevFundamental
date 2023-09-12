@@ -392,7 +392,241 @@ This is \nIT5001
 
 ## 2. Functions
 
+### 2.1 Abstraction
 
+![image-20230912192717225](https://images.wu.engineer/images/2023/09/12/image-20230912192717225.png)
+
+- Function is useful, especially when a code piece will be used few times
+- User only needs to know input arguments and output data types
+  - As known as ‘Blackbox’, it is not necessary for users to understand the code in each function
+
+![image-20230912192957777](https://images.wu.engineer/images/2023/09/12/image-20230912192957777.png)
+
+#### Type of functions
+
+- Pure functions
+
+  - Function without side-effects
+  - Only mapping
+  - Outputs depend only on inputs
+
+- Functions with side-effects
+
+  - Side-effects: I/O tasks
+    - Taking input from keyboard, reading data from files, etc.
+    - Printing output to screen, writing data to files, etc.
+
+- Higher-order Functions
+
+  - Functions that accepts functions as inputs and/or return functions as outputs
+
+  $$
+  h(x) = f(g(x))
+  $$
+
+### 2.2 Python Modules and Packages
+
+#### 2.2.1 Functions in Python
+
+- Built-in functions
+  - Built-in module is loaded automatically
+  - Examples: `print()`, `input()`, `id()`
+- Functions from Python modules and packages
+  - Not loaded automatically
+  - Need to `import` when needed
+  - Example: `turtle`, `math`
+- User-defined Functions
+- Special function
+  - `main()`
+
+#### 2.2.2 Import Modules and Packages
+
+1. `import <module_name>`
+2. `from <module_name> import <names>`
+
+```python
+import math
+from math import sin, pi
+```
+
+> 对于`import math`和`from math import *`，在导入方式和随后的使用方式上有所不同：
+>
+> 1. **`import math`**:
+>    - 这种方式导入整个`math`模块。
+>    - 当你想使用`math`模块中的任何函数或变量时，你需要使用`math.`前缀。例如，要使用正弦函数，你会这样写：`math.sin(90)`
+> 2. **`from math import *`**:
+>    - 这种方式导入`math`模块中的所有函数和变量。
+>    - 这意味着你可以直接使用`math`模块中的函数或变量，而无需加`math.`前缀。例如，你可以直接写`sin(90)`而不是`math.sin(90)`。
+>    - 使用这种方式存在一个潜在的问题：如果其他模块或你的代码中有与`math`模块中的函数或变量同名的项，那么它们可能会被覆盖。这可能导致意外的行为和难以追踪的错误。
+>
+> 总之，虽然`from math import *`可以使你的代码看起来更简洁，但由于可能导致的命名冲突和代码的可读性问题，许多开发者推荐避免使用这种导入方式，而是选择`import math`或只导入所需的特定函数，例如`from math import sin, cos`。
+
+#### 2.2.3 Namespaces: Importing Modules
+
+**Import Single Module**
+
+![image-20230912195105773](https://images.wu.engineer/images/2023/09/12/image-20230912195105773.png)
+
+**Import Multiple Modules**
+
+![image-20230912195157145](https://images.wu.engineer/images/2023/09/12/image-20230912195157145.png)
+
+**Import Objects from Modules**
+
+![image-20230912195248752](https://images.wu.engineer/images/2023/09/12/image-20230912195248752.png)
+
+> 总结：
+>
+> 在导入整个模块时，会导入整个模块的namespace，这个namespace在global namespace当中。然而当导入一个模块中的某个或多个函数时，这些函数会被导入到global namespace。
+
+### 2.3 User-Defined Functions
+
+![image-20230912195454207](https://images.wu.engineer/images/2023/09/12/image-20230912195454207.png)
+
+#### 2.3.1 Arguments
+
+- Arguments is the input of the function, it allows function to receive data from the outside environment
+
+![image-20230912200422206](https://images.wu.engineer/images/2023/09/12/image-20230912200422206.png)
+
+##### Type of Arguments
+
+1. **位置参数（Positional Arguments）**:
+
+   - 这是最常见的参数类型。它们是基于它们在函数定义中的位置来传递的。
+
+   ```python
+   def add(x, y):
+   	return x+y
+   ```
+
+   在上面这个例子中，`x` `y`是位置参数。即我们需要对应参数在括号中的位置传入参数，例如`add(3,4)`，其中x就是3，y就是4
+
+2. **关键字参数（Keyword Arguments）**:
+
+   - 当调用函数时，可以使用参数的名称来为其提供值，这称为关键字参数。这种调用方法可以提高代码的可读性，并允许我们在调用函数时更加灵活地排列参数。
+
+   ```python
+   add(x=5, y=3)
+   ```
+
+   在使用关键字参数时，可以无视顺序。
+
+3. **默认参数（Default/optional Arguments）**:
+
+   - 函数定义时可以为参数设置默认值。如果调用函数时没有提供该参数的值，则使用默认值。
+
+   ```python
+   def greet(name, greeting="Hello"):
+       print(greeting, name)
+   
+   greet("Alice")  # 输出: Hello Alice
+   greet("Bob", greeting="Hi")  # 输出: Hi Bob
+   ```
+
+> **Extra types of argument**
+>
+> 1. **可变位置参数（\*args）**:
+>
+> - 这允许函数接收任意数量的位置参数。这在函数内部被表示为一个元组(tuple)。
+>
+> ```python
+> def multiply(*nums):
+>     result = 1
+>     for num in nums:
+>         result *= num
+>     return result
+> ```
+>
+> 2. **可变关键字参数（\*\*kwargs）**
+>
+>    - 这允许函数接收任意数量的关键字参数。这在函数内部被表示为一个字典。
+>
+>    ```python
+>    def display_data(**data):
+>        for key, value in data.items():
+>            print(key, ":", value)
+>    ```
+>
+> 3. **参数类型注解（Type Annotations）**:
+>
+>    - 从Python 3.5开始，函数参数可以包括类型注解，这可以增加代码的可读性。
+>
+>    ```python
+>    def add(x: int, y: int) -> int:
+>        return x + y
+>    ```
+
+#### 2.3.2 Return Statement
+
+- It does two things
+  1. Terminates the function
+  2. Return statement pass the output of function to the calling function
+
+![image-20230912200356522](https://images.wu.engineer/images/2023/09/12/image-20230912200356522.png)
+
+![image-20230912200403892](https://images.wu.engineer/images/2023/09/12/image-20230912200403892.png)
+
+#### 2.3.3 Function Tracing
+
+##### Namespace
+
+![image-20230912201313110](https://images.wu.engineer/images/2023/09/12/image-20230912201313110.png)
+
+##### Tracing 1
+
+![image-20230912201410351](https://images.wu.engineer/images/2023/09/12/image-20230912201410351.png)
+
+![image-20230912201420789](https://images.wu.engineer/images/2023/09/12/image-20230912201420789.png)
+
+##### Tracing 2
+
+![image-20230912201541315](https://images.wu.engineer/images/2023/09/12/image-20230912201541315.png)
+
+![image-20230912201550111](https://images.wu.engineer/images/2023/09/12/image-20230912201550111.png)
+
+#### 2.3.4 Doc String
+
+- Contains information about the function
+  - Describes how to use the function
+  - Can access it using help/doc methods
+
+![image-20230912200531566](https://images.wu.engineer/images/2023/09/12/image-20230912200531566.png)
+
+### 2.4 Pure Functions
+
+> Recall:
+>
+> Side-effects: I/O tasks
+>
+> - Taking input from keyboard, reading data from files, etc.
+> - Printing output to screen, writing data to files, etc.
+
+- Pure functions has no side-effects, only mapping. The output of the pure function depends only on inputs
+
+```python
+x = 2
+y = 4
+def sum_two(x, y):
+	return x+y
+z = sum_two(3,6)
+print(z)
+```
+
+```python
+x = 2
+y = 4
+def sum_two(x):
+	return x+y
+z = sum_two(3)
+print(z)
+```
+
+> Pure function的定义为：该函数没有任何的副作用(Side-effects)，包含获取额外的输入和有额外的输出。并且该函数的输出是否只取决于输入。
+>
+> 对于第一段函数，该函数的输出只取决于输入参数`x`, `y`而不依赖任何外部的变量或者状态。故该函数为纯函数pure function
+>
+> 对于第二段函数，该函数取决于输入参数`x`和外部参数`y`。所以他不是一个pure function
 
 ## 3. Selections and Loops
 
