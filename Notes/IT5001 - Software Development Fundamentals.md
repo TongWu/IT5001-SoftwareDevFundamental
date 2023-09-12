@@ -2,13 +2,15 @@
 
 ## 0. Introductions
 
-### 0.0 Disclaimer and illustrations
+### 0.0 Disclaimer and Referrences
 
 - This is the self-written note for National University of Singapore, School of Computing, Course IT5001: Software Development Fundamentals. The materials and referrals used in this note are for revision and organization use only
 
 - > The content and knowledge in this block means which is not in the slides of this course. The understanding for it is optional and not pre-qualified.
 
-- The most of the content used in this material are referred from the National University of Singapore. Few of contents in the block as mentioned before, are referred from the University of Manchester, Columbia University, website or self-organized. Do not share the 
+- The most of the content used in this material are referred from the National University of Singapore. Few of contents in the block as mentioned before, are referred from the University of Manchester, Columbia University, website or self-organized. 
+
+- **Do not share any content in this note to anyone without permission.**
 
 ### 0.1 Software Development
 
