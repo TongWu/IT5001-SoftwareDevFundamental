@@ -2,15 +2,15 @@
 
 ## 0. Introductions
 
-### 0.0 Disclaimer and Referrences
+### 0.0 Disclaimer and References
 
 - This repo is the self-organized warehouse for National University of Singapore, School of Computing, Course IT5001: Software Development Fundamentals.
 
-- This is the self-written note for National University of Singapore, School of Computing, Course IT5001: Software Development Fundamentals. The materials and referrals used in this note are for revision and organization use only
+- This is the self-written note for National University of Singapore, School of Computing, Course IT5001: Software Development Fundamentals. The materials and references used in this note are for revision and organization use only.
 
-- > The content and knowledge in this block means which is not in the slides of this course. The understanding for it is optional and not pre-qualified.
+- > The content in this kind of block means which is not in the aspect of this course, which may from references, or self-understanding/translations. The understanding for them are not required under this course regulation.
 
-- The most of the content and material used in this repo are referred from the National University of Singapore. Few of contents in the block as mentioned before, are referred from the University of Manchester, Columbia University, website or/and self-organized. 
+- The most of the content and material used in this repo are referred from the National University of Singapore. Few of contents in the block as mentioned before, are referenced from the University of Manchester, Columbia University, website or/and self-organized. 
 
 - **Do not share any content in this repo to anyone without permission, including course material, video, lab assignment and notes.**
 
@@ -275,18 +275,18 @@
 
 ![image-20230911161949960](https://images.wu.engineer/images/2023/09/11/image-20230911161949960.png)
 
-> Lexicographical Ordering 词典排序
->
-> - First, the first two letters are compared, and if they differ this determines the outcome of the comparison
-> - If they are equal, the next two letters are compared, and so on. Until either sequence is exhausted
->
+Lexicographical Ordering 词典排序
+
+- First, the first two letters are compared, and if they differ this determines the outcome of the comparison
+- If they are equal, the next two letters are compared, and so on. Until either sequence is exhausted
+
 > 在词典排序中，元素是基于它们的组成部分逐一进行比较的。对于字符串，这意味着它们是基于各自的字符按字母顺序进行排序的。
 >
 > 让我们通过以下几点来解释词典排序：
->
-> 1. **字符比较**：字符串中的字符按其ASCII值（或其他相关的字符编码，如Unicode）进行比较。
+> 
+>1. **字符比较**：字符串中的字符按其ASCII值（或其他相关的字符编码，如Unicode）进行比较。
 > 2. **顺序性**：从左到右逐字符地比较两个字符串。在遇到第一个不同的字符时，比较就会结束，返回的结果取决于这个不同字符的顺序。
-> 3. **字符串长度**：如果两个字符串在某个位置的字符都相同，但一个字符串较短并且是另一个字符串的前缀（例如，“abc”和“abcd”），那么较短的字符串在词典排序中将位于前面。
+>3. **字符串长度**：如果两个字符串在某个位置的字符都相同，但一个字符串较短并且是另一个字符串的前缀（例如，“abc”和“abcd”），那么较短的字符串在词典排序中将位于前面。
 > 4. **应用范围**：词典排序不仅适用于字符串，还可应用于其他可以按元素逐一比较的数据结构，如列表或元组。
 
 #### String Indexing and Slicing
@@ -363,7 +363,7 @@ This is \nIT5001
 
 ![image-20230911163754381](https://images.wu.engineer/images/2023/09/11/image-20230911163754381.png)
 
-#### Builtin
+#### Built-in
 
 - Contains names of `_builtin_` module
   - Datatypes
@@ -642,7 +642,200 @@ print(z)
 
 ![image-20230912205854358](https://images.wu.engineer/images/2023/09/12/image-20230912205854358.png)
 
+### 3.1 Selection
 
+```python
+if (condition): # If the condition is true, do the expression below
+	{expression}
+	if (condition): # Nested selection
+		{expression}
+elif (condition): # AKA. else if. The selection is still legal without "elif"
+else: # The selection is still legal without "else"
+	{expression}
+```
+
+- In python, strongly follow the indentation (缩进)
+
+### 3.2 Repetition
+
+```python
+while (condition): # Do the expression in the indentation if the condition is true
+    {expression}
+```
+
+- Infinity Repetition:
+
+```python
+while True:
+	{expression}
+```
+
+##### `<=` or `<`?
+
+```python
+n = 5
+while n < 10:
+	print(n)
+	n += 1
+    
+# Output:
+5
+6
+7
+8
+9
+# Final n=10
+```
+
+```python
+n = 5
+while n <= 10:
+	print(n)
+	n += 1
+    
+# Output:
+5
+6
+7
+8
+9
+10
+# Final n=11
+```
+
+> 在执行while loop时，程序会先判断条件，若条件为真则运行loop中的代码。
+
+### 3.3 Iteration
+
+**The act of repeating a process with the aim of approaching a desired goal, target or result**
+
+- There are three types of loops
+  1. Must run exactly N times
+  2. Run many number of times
+  3. Run at most N times
+     - Check all True (or check all False)
+     - Find any True (or False)
+
+#### 3.3.1 For loop (Must run exactly N times)
+
+- Use iterable objects to repeatedly execute a series of tasks
+- Number of repetitions are equal to number of items provided by iterable object
+
+##### Iterable and Iterators
+
+![image-20230912222536678](https://images.wu.engineer/images/2023/09/12/image-20230912222536678.png)
+
+##### Built-in iterable: `range()`
+
+- `range({start}, {stop}, {step})`
+  - Generate sequence of numbers from `start` (inclusive) to `stop` (exclusive), incremented by `step`
+  - `start` and `step` are optional arguments
+    - Default values:
+      - `start = 0`
+      - `step = 1`
+
+- Example:
+
+```python
+for i in range(5): # same as range(0, 5), range(0, 5, 1)
+	print(i)
+
+Output: 
+0
+1
+2
+3
+4
+```
+
+#### 3.3.2 Run many number of times
+
+```python
+def sumNumber():
+    sumSoFar = 0
+    print('Please enter a number or type \'bye\' to sum:')
+    num = input()
+    while num != 'bye':
+        sumSoFar += int(num)
+        print('Please enter a number or type \'bye\' to sum:')
+        num = input()
+    print(f'The sum of all numbers is {sumSoFar}')
+    
+sumNumber()
+```
+
+- We do not know how many numbers will the user enter
+- Line 3,4 and Line 7,8 are repeated
+  - Because the first time run the function will through line 3,4 to enter the while loop
+  - Then the line 7,8 will run many times as user want
+- While loop terminate condition: `num = 'bye'`
+  - If `num = 'bye'`, exit the while loop
+
+#### 3.3.3 Run at most N times (check all True)
+
+```python
+def checkAllAlpha(string):
+    l = len(string)
+    for i in range(l):
+        if not isAlphabet(string[i]):
+            return False
+    return True
+```
+
+- The function input a string variable `string`
+- Get the length of the `string` as a iterator
+- For each character in `string`, check if this character is alphabet:
+  - If not alphabet, terminate the function and return `False`
+  - If all characters are alphabet, terminate the function and return `True`
+
+- **In this case, the loop will most run `l` times, but it may less than `l` times.**
+
+#### 3.3.4 When use `for` and `while`?
+
+- `for`
+  - You know how many times the loop will run
+  - Namely, anything in the body of the loop will NOT change the number of times you repeat the loop
+  - E.g., printing all the data in a spreadsheet
+- `while`
+  - You may not know how many times you need to repeat
+  - The number of times is depended on the “condition”, in which, may change unpredictably inside the loop
+  - E.g., while the player haven’t guess the right answer, keep guessing
+
+### 3.4 `break` & `continue`
+
+```python
+for j in range(10):
+    print(j)
+    if j == 3:
+        break # break out the loop
+print('done')
+# Output:
+0
+1
+2
+3
+done
+```
+
+```python
+for j in range(10):
+    if j == 3:
+        continue # Skip the expression below, jump to the next loop with j++
+    print(j)
+print('done')
+
+# Output:
+0
+1
+2
+4
+5
+6
+7
+8
+9
+done
+```
 
 ## 4. Functions Scope and Recursion
 
