@@ -1,8 +1,8 @@
 # IT5001 - Software Development Fundamentals
 
-## 0. Introductions
+## 1. Introductions
 
-### 0.0 Disclaimer and References
+### 1.1 Disclaimer and References
 
 - This repo is the self-organized warehouse for National University of Singapore, School of Computing, Course IT5001: Software Development Fundamentals.
 
@@ -14,6 +14,6 @@
 
 - **Do not share any content in this repo to anyone without permission, including course material, video, lab assignment and notes.**
 
-### 0.1 Notes
+### 1.2 Notes
 
 The self-orgnised note can be found at [this link](https://wiki.wu.engineer/NationalUniversityOfSingapore/IT5001-SoftwareDevFundamental) (The UI is Chinese Version), or navigate to the 'Notes' folder in this repo.
