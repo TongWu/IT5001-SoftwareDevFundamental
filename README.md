@@ -1166,9 +1166,426 @@ def reverseString(s):
 - Only functions at the interface should be used
 - We can choose between different implementations as long as contract is fulfilled
 
-## 7. Sequences
+## 7. Data Collections (Sequences)
 
+### 7.1 Indexed Collection
 
+- Lists and Tuples are both belongs to a type of data structure called arrays
+- **Lists are mutable (can modify the data) and is dynamic arrays**
+- **Tuples are immutable (cannot modify the data) and is static arrays**
+
+#### 7.1.1 Strings
+
+- Mentioned in previous chapter
+
+#### 7.1.2 Lists
+
+- Ordered sequence of data types
+  - Homogeneous sequence. Lists can be:
+    1. Sequence of integers `[1, 2, 3, 4]`
+    2. Sequence of floats `[1.0, 2.0, 3.0, 4.0]`
+    3. Sequence of strings `['a', 'b', 'c', 'd']`
+    4. Sequence of lists `[[1,2,3,4], [1.0, 2.0, 3.0, 4.0], ['a', 'b', 'c', 'd']]`
+    5. Sequence of functions, etc.
+  - Heterogeneous sequence
+    - Mix of integers, floats, strings, etc.
+- Lists defined using square brackets `[]`
+
+![image-20230913225204556](https://images.wu.engineer/images/2023/09/13/image-20230913225204556.png)
+
+![image-20230913225218016](https://images.wu.engineer/images/2023/09/13/image-20230913225218016.png)
+
+![image-20230913225341543](https://images.wu.engineer/images/2023/09/13/image-20230913225341543.png)
+
+##### Mutable
+
+- Elements can be replaced
+- Elements can be added `append()`
+- Elements can be removed `remove()`
+  - Can remove a specific element (If element occurs multiple times, removes the first occurrence)
+  - Can remove element at a specific location (index)
+  - Can remove from the end of the list
+- Elements can be sorted
+  - `sort()`
+  - `sorted()`
+- Elements can be reversed
+
+##### Dynamic-size Arrays
+
+![image-20230913225814915](https://images.wu.engineer/images/2023/09/13/image-20230913225814915.png)
+
+##### `append()` vs. concatenation 级联
+
+```python
+my_list_1 = [1,2,3,4]
+my_list_2 = [5,6,7,8]
+my_list_1.append(my_list_2) # Append
+my_list_1
+# Output: [1,2,3,4, [5,6,7,8]]
+```
+
+```python
+my_list_1 = [1,2,3,4]
+my_list_2 = [5,6,7,8]
+my_list_1 = my_list_1 + my_list_2 # Concatenation
+my_list_1
+# Output: [1,2,3,4,5,6,7,8]
+```
+
+> 当讨论`append`和`级联`（通常指的是连接）时，我们通常是在讨论列表（list）的操作。下面是`append`和`级联（连接）`之间的主要区别：
+>
+> 1. **定义**：
+>    - `append()`: 是一个列表方法，用于在列表的末尾添加一个元素。
+>    - `级联（连接）`: 指的是将两个或多个列表连接在一起，创建一个新的列表。在Python中，可以使用`+`运算符来连接列表。
+> 2. **结果**：
+>    - `append()`: 修改原始列表并在其末尾添加一个元素。它不返回一个新列表，而是在原地进行修改。
+>    - `级联（连接）`: 创建一个新的列表，它是两个列表的组合。
+> 3. **使用场景**：
+>    - 当你想在列表的末尾添加一个元素时，使用`append()`。
+>    - 当你想将两个列表组合成一个新的列表时，使用`级联（连接）`。
+
+##### String to Lists (and vice-versa)
+
+```python
+my_string = "IT5001"
+my_list = list(my_string)
+```
+
+![image-20230913230453239](https://images.wu.engineer/images/2023/09/13/image-20230913230453239.png)
+
+```python
+my_list = ['a', 'b', 'c', 'd']
+my_string = str(my_list)
+a = my_string[0]
+```
+
+![image-20230913230553213](https://images.wu.engineer/images/2023/09/13/image-20230913230553213.png)
+
+##### Aliasing vs Cloning
+
+![image-20230913230747490](https://images.wu.engineer/images/2023/09/13/image-20230913230747490.png)
+
+> 在Python的`list`中，`aliasing`和`cloning`是两个重要的概念，涉及对象的引用和复制。
+>
+> 1. **Aliasing（别名）**:
+>
+>    - 当两个变量指向同一个列表对象时，我们称这种现象为别名。
+>    - 因为列表是可变的，所以当其中一个变量对列表进行修改时，另一个变量引用的列表内容也会随之改变，因为它们都指向同一个列表对象。
+>
+>    示例：
+>
+>    ```python
+>    a = [1, 2, 3]
+>    b = a  # b 是 a 的别名，它们都指向同一个列表对象
+>    b[0] = 10
+>    print(a)  # 输出：[10, 2, 3]，因为修改 b 也会影响 a
+>    ```
+>
+> 2. **Cloning（克隆）**:
+>
+>    - 克隆是创建列表的一个完整拷贝或副本。
+>    - 这意味着原始列表和克隆后的列表是两个不同的对象。对其中一个列表的修改不会影响另一个列表。
+>    - 克隆可以使用切片、`copy`方法或其他方法来实现。
+>
+>    示例：
+>
+>    ```python
+>    a = [1, 2, 3]
+>    c = a[:]  # 使用切片克隆列表
+>    d = a.copy()  # 使用copy方法克隆列表
+>    c[0] = 10
+>    d[1] = 20
+>    print(a)  # 输出：[1, 2, 3]，a 的内容没有改变
+>    print(c)  # 输出：[10, 2, 3]
+>    print(d)  # 输出：[1, 20, 3]
+>    ```
+>
+> **为什么这些概念重要？**
+>
+> 理解`aliasing`和`cloning`在编程中非常重要，因为对列表的错误操作可能会导致预期之外的结果。例如，当你无意中使用了列表的别名并进行了修改，这可能会影响到程序的其他部分，导致难以追踪的错误。
+
+##### `sort()` vs `sorted()`
+
+![image-20230913230954159](https://images.wu.engineer/images/2023/09/13/image-20230913230954159.png)
+
+> `sort()` 和 `sorted()` 都是用来对集合进行排序的，但它们之间有一些关键的不同。
+>
+> 1. **方法 vs 函数**：
+>    - `sort()` 是列表（list）的一个方法。因此，你只能在列表上调用它，如 `my_list.sort()`.
+>    - `sorted()` 是一个内置函数，可以对任何可迭代的对象进行操作（如列表、元组、字符串等），并且总是返回一个新的排序列表。
+> 2. **返回值**：
+>    - `sort()` 不返回任何值（即返回 `None`）。它直接修改原始列表。
+>    - `sorted()` 返回一个新的排序列表，并且不会修改原始的可迭代对象。
+> 3. **应用对象**：
+>    - `sort()` 只适用于列表。
+>    - `sorted()` 可以应用于任何可迭代的对象。
+> 4. **不变性**：
+>    - 使用 `sort()` 时，原始列表会被修改。
+>    - 使用 `sorted()` 时，原始可迭代对象保持不变。
+
+##### `reverse()`
+
+![image-20230913231044029](https://images.wu.engineer/images/2023/09/13/image-20230913231044029.png)
+
+##### List of anything
+
+![image-20230913231117499](https://images.wu.engineer/images/2023/09/13/image-20230913231117499.png)
+
+![image-20230913231125413](https://images.wu.engineer/images/2023/09/13/image-20230913231125413.png)
+
+##### Iterable
+
+```python
+for i in [0,1,2,3,4]:
+	print(i)
+    
+my_list = [1,2,3,4]
+for i,j in enumerate(my_list):
+    print(f'Element at index {i} is {j}')
+    
+# Output
+Element at index 0 is 1
+Element at index 1 is 2
+Element at index 2 is 3
+Element at index 3 is 4
+```
+
+##### Mutation and Iteration
+
+- Avoid mutating a list while iterating over the list
+
+```python
+myList = [1,2,3,4]
+
+for element in myList:
+	myList.remove(element)
+```
+
+- `next()` method uses an index to retrieve the elements from `myList`
+- `remove()` method mutates the `myList`, but the index in `next()` method will not be updated
+
+> 在Python中，直接在遍历列表的过程中修改它（例如通过删除其元素）是一种常见的错误做法，因为这会干扰迭代过程并导致意外的结果。
+>
+> 以下是修改列表时可能遇到的问题：
+>
+> 1. **索引偏移**： 当你从列表中删除一个元素时，后面的元素的索引都会减少1。这可能导致跳过一些元素或出现索引错误。
+> 2. **长度变化**： 列表的长度在迭代过程中发生变化，可能导致某些元素未被处理或循环出现超出范围的错误。
+> 3. **递归复杂性**： 当结合递归时，这种行为会变得更加复杂和难以预测，因为你可能在递归的每一层都在修改列表。
+>
+> 为了避免这些问题，通常采用以下策略之一：
+>
+> 1. **创建新的列表**： 而不是修改原始列表，你可以创建一个新的列表，其中包含所有你想保留的元素。
+> 2. **反向迭代**： 通过反向迭代列表，从末尾开始，可以确保即使在删除元素时，也不会干扰尚未处理的元素的索引。
+> 3. **标记待删除的元素**： 在迭代期间，你可以标记要删除的元素（例如，将其添加到另一个列表中），然后在迭代结束后删除它们。
+>
+> 如果你需要使用递归来处理列表（例如，处理嵌套的列表结构），通常最安全的方法是创建新的列表或其他数据结构来存储结果，而不是尝试修改原始列表。
+
+![image-20230913231946718](https://images.wu.engineer/images/2023/09/13/image-20230913231946718.png)
+
+> 1. **空列表**： 如果`lst`是一个空列表，那么`lst[0]`会导致`IndexError`。函数在被调用前应该确保列表不为空，或者在函数内部进行检查。
+> 2. **非数值元素**： 如果列表中含有非数值元素（例如字符串、列表或其他对象），而这些元素之间不能进行比较，则`i > maxSofar`可能会导致`TypeError`。
+> 3. **非列表输入**： 尽管函数名是`findMax`，这个函数实际上可以处理任何可迭代的输入，如元组、集合等。考虑是否需要对输入类型进行检查或者更改函数名称以反映其更广泛的功能。
+> 4. **内置函数**： Python已经提供了一个内置的`max`函数来获取可迭代对象中的最大值。除非有特定的原因（例如，你需要自定义比较逻辑或其他操作），否则通常推荐使用内置的`max`函数。
+
+##### List Comprehensions
+
+- Provides a concise way to apply an operation to the items in iterable object and store the result as a list
+- Syntax
+  - `[{expression} for {element} in {iterable} if {condition}]`
+- Returns an iterable
+
+```python
+#TODO: Create a list my_list = [1,2,3,...,100]
+my_list = [i for i in range(1, 101)]
+
+#TODO: Create a list of first 10 squared numbers
+my_list2 = [i*i for i in range(1,11)]
+
+#TODO: Create a list of odd numbers less than 100
+my_list3 = [i for i in range(1,101,2)]
+
+#TODO: Create a list of prime numbers less than 50
+for i in range(2,8):
+    print([j for j in range(i*2, 50, i)])
+```
+
+> 1. **"Provides a concise way to apply an operation to the items in iterable object and store the result as a list"**:
+>    - 这句话解释了列表推导式的核心用途。它提供了一种简洁的方法来对可迭代对象中的每个项目进行操作，并将结果存储为一个列表。
+> 2. **Syntax**:
+>    - 这是一个子标题，指的是以下内容将描述列表推导式的语法。
+> 3. **"{expression} for {element} in {iterable} if {condition}"**:
+>    - 这是列表推导式的基本语法。
+>      - `{expression}` 是对每个元素进行的操作。
+>      - `{element}` 是当前从`{iterable}`中取出的元素。
+>      - `{iterable}` 是你要迭代的对象，例如列表、元组或任何可迭代的对象。
+>      - `if {condition}` 是一个可选部分，表示只有当条件为`True`时，才会对`{element}`进行`{expression}`操作。
+> 4. **"Returns an iterable"**:
+>    - 这意味着列表推导式的结果是一个可迭代的对象，具体来说，就是一个列表。
+
+##### Generator Expressions
+
+- Provides a generator that can be used to iterate over without explicitly generating the list of items
+- Syntax:
+  - `({expression} for {element} in {iterable} if {condition})`
+- Returns an iterator
+- Requires less memory than list
+
+```python
+num = 4
+square_list = [x**2 for x in range(num)]
+square_generator = (x**2 for x in range(num))
+# Two approaches' output are same
+print(f'Size of list {sys.getsizeof(square_list)}') # Output: 87624
+print(f'Size of generator {sys.getsizeof(square_generator)}') # Output: 120
+```
+
+> 1. **"Provides a generator that can be used to iterate over without explicitly generating the list of items"**:
+>    - 这句话描述了生成器表达式的核心用途。生成器表达式提供了一个生成器，允许你逐项迭代，而不需要事先生成整个列表。这意味着不像列表推导式，它不会一次性产生所有的项，而是每次产生一个项。
+> 2. **Syntax**:
+>    - 这是一个子标题，指的是以下内容将描述生成器表达式的语法。
+> 3. **"{expression} for {element} in {iterable} if {condition}"**:
+>    - 这是生成器表达式的基本语法，与列表推导式非常相似。
+>      - `{expression}` 是对每个元素进行的操作。
+>      - `{element}` 是当前从`{iterable}`中取出的元素。
+>      - `{iterable}` 是你要迭代的对象，例如列表、元组或任何可迭代的对象。
+>      - `if {condition}` 是一个可选部分，表示只有当条件为`True`时，才会对`{element}`进行`{expression}`操作。
+> 4. **"Returns an iterator"**:
+>    - 这意味着生成器表达式的结果是一个迭代器，你可以使用例如`next()`函数来逐一获取项。
+> 5. **"Requires less memory than list"**:
+>    - 由于生成器表达式不会一次性生成所有的结果，而是在每次迭代时按需生成，因此它比等效的列表推导式占用更少的内存。
+
+#### 7.1.3 Tuples
+
+- A static and an immutable array/list
+- Syntax:
+  - `int_tuple = (1,2,3)`
+  - `float_tuple = (1.0,2.0,3.0)`
+  - `str_tuple = ('a','b','c')`
+  - `mixed_tuple = (1, 1.0, 'a')`
+
+![image-20230913233323539](https://images.wu.engineer/images/2023/09/13/image-20230913233323539.png)
+
+![image-20230913233330326](https://images.wu.engineer/images/2023/09/13/image-20230913233330326.png)
+
+![image-20230913233340146](https://images.wu.engineer/images/2023/09/13/image-20230913233340146.png)
+
+##### Lists and Tuples
+
+- Similarities:
+  - List and tuple are:
+    - indexed
+    - iterable
+  - Both can store same or mixed data types
+- Differences:
+  - List is mutable
+  - Tuple is immutable
+
+![image-20230913233522261](https://images.wu.engineer/images/2023/09/13/image-20230913233522261.png)
+
+##### Tuple with only one element
+
+```python
+tuple1 = (3,)
+print(tuple1) # Output: (3,)
+tuple1[0] # Output: 3
+```
+
+#### 7.1.4 Lists vs Tuples
+
+- List
+  - Usually stores a large collection of data with the same type
+- Tuple
+  - Usually stores a small collections of items with various data types
+
+### 7.2 Non-indexed Collection
+
+#### 7.2.1 Sets
+
+- A set is an **unordered** collection of **immutable** elements with **no duplicate** elements
+  - Unordered: Cannot get a single element by its index, like `s[2]`
+  - No duplicate: every element exists only once in a set
+
+![image-20230913233940367](https://images.wu.engineer/images/2023/09/13/image-20230913233940367.png)
+
+![image-20230913233955144](https://images.wu.engineer/images/2023/09/13/image-20230913233955144.png)
+
+![image-20230913234008743](https://images.wu.engineer/images/2023/09/13/image-20230913234008743.png)
+
+```python
+>>> setA = {1,2,3,4}
+>>> setB = {3,4,5,6}
+>>> setA | setB #Union
+{1,2,3,4,5,6}
+>>> setA & setB #Intersection
+{3,4}
+>>> setA - setB #A-B
+{1,2}
+>>> setA ^ setB #(A|B)-A&B
+{1,2,5,6}
+>>> setA.remove(1)
+>>> setA
+{2,3,4}
+>>> setA.remove(1) #error if element missing
+error
+>>> setA.discard(1) #use discard instead
+```
+
+```python
+# Sets are iterable
+my_set = {1,2,3}
+for i in my_set:
+	print(i)
+	
+#Output:
+1
+2
+3
+```
+
+##### Set from list and Vice-versa
+
+![image-20230913234439182](https://images.wu.engineer/images/2023/09/13/image-20230913234439182.png)
+
+#### 7.2.2 Dictionary
+
+- You search for the key in the dictionary
+- Each key has a **correspondent** 相应的 value
+
+![image-20230913234659258](https://images.wu.engineer/images/2023/09/13/image-20230913234659258.png)
+
+![image-20230913234640692](https://images.wu.engineer/images/2023/09/13/image-20230913234640692.png)
+
+- Each pair has a key and a value
+
+![image-20230913234749847](https://images.wu.engineer/images/2023/09/13/image-20230913234749847.png)
+
+- Key is on the left, value on the right
+- Can store any type
+
+```python
+>>> my_dict = {'a':1, 'b':2}
+>>> my_dict['b']
+2
+```
+
+- AKA **hashtable** in other languages
+
+![image-20230913234957817](https://images.wu.engineer/images/2023/09/13/image-20230913234957817.png)
+
+![image-20230913235055853](https://images.wu.engineer/images/2023/09/13/image-20230913235055853.png)
+
+![image-20230913235106770](https://images.wu.engineer/images/2023/09/13/image-20230913235106770.png)
+
+![image-20230913235112190](https://images.wu.engineer/images/2023/09/13/image-20230913235112190.png)
+
+- Other dict methods
+  - `clear()` clear all
+  - `copy()` make a copy
+  - `keys()` return all keys
+  - `values()` return all values
+  - `items()` return all keys + values
+
+![image-20230913235219858](https://images.wu.engineer/images/2023/09/13/image-20230913235219858.png)
 
 ## 8. Anonymous Functions
 
