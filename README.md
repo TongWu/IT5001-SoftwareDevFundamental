@@ -16,4 +16,4 @@
 
 ### 0.1 Notes
 
-The self-orgnised note can be found at [this link](https://wiki.wu.engineer/NationalUniversityOfSingapore/IT5001-SoftwareDevFundamental) (The UI is Chinese Version).
+The self-orgnised note can be found at [this link](https://wiki.wu.engineer/NationalUniversityOfSingapore/IT5001-SoftwareDevFundamental) (The UI is Chinese Version), or navigate to the 'Notes' folder in this repo.
