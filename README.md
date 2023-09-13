@@ -1010,11 +1010,161 @@ print(fractorial(4))
 
 ## 5. Recursion VS. Iteration
 
+### 5.1 Reversing a String
 
+#### 5.1.1 Iterative Version 1
 
-## 6. Debugging
+```python
+def reverseStringI(s):
+	output = ''
+	l = len(s)
+	for i in range(l):
+		output += s[l-i-1]
+	return output
 
+>>> reverseString('abcde')
+'edcba'
+```
 
+![image-20230913011726729](https://images.wu.engineer/images/2023/09/12/image-20230913011726729.png)
+
+#### 5.1.2 Iterative Version 2
+
+```python
+def reverseString(s):
+	output = ''
+	for c in s:
+		output = c + output
+	return output
+	
+>>> reverseString('abcde')
+'edcba'
+```
+
+![image-20230913200315114](https://images.wu.engineer/images/2023/09/13/image-20230913200315114.png)
+
+#### 5.1.3 Recursive Version
+
+```python
+def reverseString(s):
+	if not s:
+		return ''
+	return reverseString(s[1:])+s[0]
+```
+
+![image-20230913204445164](https://images.wu.engineer/images/2023/09/13/image-20230913204445164.png)
+
+>1. **迭代 (Iterative)**:
+>   - 迭代方法是通过使用循环（例如 `for` 或 `while`）来反复执行某些操作直到满足某个条件。
+>   - 迭代通常更直观，尤其是对于那些习惯于思考“步骤”的人。
+>2. **递归 (Recursive)**:
+>   - 递归方法是函数自己调用自己来解决问题的小部分，直到满足终止条件或基本情况。
+>   - 递归往往可以用更少的代码来实现
+>3. **何时使用迭代或递归**:
+>   - 如果问题可以简单地分解为重复的相似任务，那么迭代可能是一个更好的选择。
+>   - 如果问题可以自然地分解为更小的子问题，递归可能更适合。但要注意，深度递归可能导致栈溢出。
+>
+>4. 性能与效率
+>
+>   - 在python中，由于函数的调用导致了额外的运行时间，故递归通常比迭代慢。此外，深度递归可能会导致栈溢出错误
+>   - 迭代通常更高效，因为其不涉及函数调用的开销
+>
+>5. 示例
+>
+>   1. 斐波那契数列
+>
+>   ```python
+>   def fibonacci_iterative(n):
+>       if n <= 1:
+>           return n
+>       a, b = 0, 1
+>       for _ in range(2, n+1):
+>           a, b = b, a + b
+>       return b
+>       
+>   def fibonacci_recursive(n):
+>       if n <= 1:
+>           return n
+>       return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
+>   ```
+>
+>   尽管递归版本更为简洁，但是面对非常大的`n`值，其运行速度会非常慢，因为他重复计算了许多相同的值。递归问题一般可以通过使用缓存或动态规划（DP）来优化
+
+> 总结：
+>
+> 一般来说，现阶段优选迭代(iterative)。然而对于一个问题能够拆分为许多个小问题的情况下(divide and conquer)，递归(recursive)更有逻辑意义，然而这并不代表递归是最好的选择。事实上，对于分而治之的问题，动态规划(dynamic programming)是更好的选择。
+
+### 5.2 Code Refactoring
+
+- Refactoring is a disciplined technique for restructuring an existing body of code, altering its internal structure without changing its external behavior.
+
+![image-20230913210337455](https://images.wu.engineer/images/2023/09/13/image-20230913210337455.png)
+
+### 5.3 Nested Functions
+
+![image-20230913210544963](https://images.wu.engineer/images/2023/09/13/image-20230913210544963.png)
+
+![image-20230913210551383](https://images.wu.engineer/images/2023/09/13/image-20230913210551383.png)
+
+- Inner functions **can access** global variables **but cannot modify** them.
+
+#### 5.3.1 Global Keyword
+
+![image-20230913210657898](https://images.wu.engineer/images/2023/09/13/image-20230913210657898.png)
+
+## 6. Bugs and Debugging
+
+- Syntax Error
+  - A syntax error is an error in the source code of a program. Since computer programs **must follow strict syntax** to compile correctly, any aspects of the code that do not conform to the syntax of the programming language will produce a syntax error
+
+### 6.1 Debugging
+
+- Means to remove errors from a program
+- After debugging, the program is **not necessarily error-free**
+  - It just means that whatever errors remain are harder to find
+  - This is especially true for large applications
+
+#### 6.2 IDLE Debugger
+
+![image-20230913211915969](https://images.wu.engineer/images/2023/09/13/image-20230913211915969.png)
+
+![image-20230913211924635](https://images.wu.engineer/images/2023/09/13/image-20230913211924635.png)
+
+![image-20230913211948845](https://images.wu.engineer/images/2023/09/13/image-20230913211948845.png)
+
+- Go
+  - Clicking this will run the program until the next break point is reached. You can insert break points in your code by right clicking and selecting Set Breakpoint. Lines that have break points set on them will be highlighted in yellow.
+- Step
+  - This executes the next statement. If the statement is a function call, it will enter the function and stop at the first line.
+- Over
+  - This executes the next statement just as Step codes. But it does not enter into functions. Instead, it finishes executing any function in the statement and stops at the next statement in the same scope.
+- Out
+  - This exits the current functions and stops in the caller of the current function.
+  - After using Step to step into a function, you can use Out to quickly execute all the statements in the function and get back out to the outer function
+- Quit: This terminates execution
+
+![image-20230913212751620](https://images.wu.engineer/images/2023/09/13/image-20230913212751620.png)
+
+### 6.2 Common Types of Errors
+
+![image-20230913212833106](https://images.wu.engineer/images/2023/09/13/image-20230913212833106.png)
+
+![image-20230913212837957](https://images.wu.engineer/images/2023/09/13/image-20230913212837957.png)
+
+![image-20230913212846231](https://images.wu.engineer/images/2023/09/13/image-20230913212846231.png)
+
+![image-20230913212853484](https://images.wu.engineer/images/2023/09/13/image-20230913212853484.png)
+
+![image-20230913212858595](https://images.wu.engineer/images/2023/09/13/image-20230913212858595.png)
+
+![image-20230913212903939](https://images.wu.engineer/images/2023/09/13/image-20230913212903939.png)
+
+### 6.3 Summary
+
+- Compound data helps us to reason at a higher conceptual level
+- Abstraction barriers separate usage of a compound data from its implementation
+- Only functions at the interface should be used
+- We can choose between different implementations as long as contract is fulfilled
 
 ## 7. Sequences
 
