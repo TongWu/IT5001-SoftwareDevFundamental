@@ -1,1 +1,1 @@
-The note folder content will be synced with the main page’s README
+The note folder content will be synced with the wiki page.
