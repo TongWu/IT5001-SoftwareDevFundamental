@@ -1780,7 +1780,36 @@ for i in my_set:
 
 ## 8. Anonymous Functions
 
+- Traditional Form:
+  - `square(x) -> x^2`
+- Anonymous Form:
+  - `x -> x^2`
+- Anonymous Functions also known as **lambda($\lambda$) Functions**
+  - Function without name
+- Python Syntax:
+  - `lambda args: {expression}`
 
+### 8.1 Functions: Traditional Math vs $\lambda$-Calculus vs Python
+
+![image-20230914160209922](https://images.wu.engineer/images/2023/09/14/image-20230914160209922.png)
+
+![image-20230914160236309](https://images.wu.engineer/images/2023/09/14/image-20230914160236309.png)
+
+```python
+>>> (lambda x:x)('abc') # Identity function
+'abc'
+>>> (lambda x:x)(10) # Identity function
+10
+>>> (lambda x: 'abc')(5) # Constant function
+‘abc'
+>>> (lambda x,y,z: x+y+z)(4,5,9) # Multiple arguments
+18
+```
+
+```python
+(lambda args: {expressions})
+# input args (x,y,z), then output the result of the expressions
+```
 
 ## 9. High Order Functions
 
