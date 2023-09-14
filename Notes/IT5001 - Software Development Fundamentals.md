@@ -1587,6 +1587,197 @@ for i in my_set:
 
 ![image-20230913235219858](https://images.wu.engineer/images/2023/09/13/image-20230913235219858.png)
 
+### 7.3 Hashability and Immutability
+
+![image-20230914145311450](https://images.wu.engineer/images/2023/09/14/image-20230914145311450.png)
+
+> 在Python中，"Hashability"和"Immutability"是两个非常重要的概念，尤其是在处理集合类型（例如`set`和`dict`）时。
+>
+> 1. **不可变性 (Immutability)**
+>
+>    不可变性意味着对象的状态或值在其生命周期内不能被修改。这意味着，一旦对象被创建，我们就不能改变它。对于不可变对象，任何修改或更新的尝试都将导致创建一个新的对象。
+>
+>    例如，Python中的字符串和元组都是不可变的。这意味着一旦你创建了这些对象，你不能改变它们的值。例如：
+>
+>    ```python
+>    my_str = "hello"
+>    # 以下操作是非法的，会抛出异常
+>    # my_str[0] = "H"
+>    
+>    my_tuple = (1, 2, 3)
+>    # 以下操作也是非法的，会抛出异常
+>    # my_tuple[0] = 4
+>    ```
+>
+> 2. **可散列性 (Hashability)**
+>
+>    一个对象如果是可散列的，意味着它有一个固定的哈希值，这个哈希值在该对象的生命周期内不会改变。在Python中，这通常意味着对象需要满足以下条件：
+>
+>    - 该对象有一个`__hash__()`方法，这个方法返回一个整数，这个整数在对象的整个生命周期内都是固定的。
+>    - 该对象还需要有一个`__eq__()`方法，可以用来判断两个对象是否相等。
+>    - 如果两个对象在`__eq__()`方法中被认为是相等的，那么它们的哈希值必须相同。
+>
+>    哈希值是数据结构，如`dict`和`set`，用来快速定位一个元素的关键工具。例如，当你在一个字典中查找一个键时，Python首先计算键的哈希值，然后使用这个哈希值来直接定位相关联的值，而不需要检查字典中的每一个键。
+>
+>    因为可变对象的内容可能会改变，所以它们通常不是可散列的。例如，列表和字典是不可散列的，而字符串、整数和元组是可散列的。
+>
+> 3. **联系**：
+>
+>    在Python中，所有不可变的原生数据类型（如`int`、`float`、`str`和`tuple`）都是可散列的。这也意味着，这些类型的对象可以被用作集合的键或元素。但这并不意味着所有不可变对象都是可散列的，或者所有可散列的对象都是不可变的。不过，在常见的原生数据类型中，这两个特性往往是同时出现的。
+
+#### Return Multiple Values
+
+![image-20230914145509171](https://images.wu.engineer/images/2023/09/14/image-20230914145509171.png)
+
+#### If don’t know the number of argument
+
+![image-20230914145541870](https://images.wu.engineer/images/2023/09/14/image-20230914145541870.png)
+
+![image-20230914145606792](https://images.wu.engineer/images/2023/09/14/image-20230914145606792.png)
+
+#### Accessing Global Variables
+
+- Can a function access(read-only) a global variable?
+  - Yes, for both mutable and immutable variables
+
+![image-20230914145702904](https://images.wu.engineer/images/2023/09/14/image-20230914145702904.png)
+
+#### Modifying Global Variables
+
+- Can a function modify a global variable with variable declared **global** within local function?
+  - Yes, for both mutable and immutable variables
+
+![image-20230914145812587](https://images.wu.engineer/images/2023/09/14/image-20230914145812587.png)
+
+- Can a function modify a global variable with variable **not declared** as global within local function?
+  - No for immutable variables
+  - Yes for mutable variables with **only** the methods that mutate data(`append()`, `sort()`, etc)
+
+![image-20230914145947096](https://images.wu.engineer/images/2023/09/14/image-20230914145947096.png)
+
+![image-20230914150009942](https://images.wu.engineer/images/2023/09/14/image-20230914150009942.png)
+
+### 7.4 Argument passed to Functions
+
+- Pass by value (regular method)
+  - An independent (duplicate) copy of argument is passed as input
+  - Not good if the argument size is very large
+    - Requires additional memory and execution time
+- Pass by reference (pass a pointer)
+  - Address of argument is passed and function access the value from the address
+  - Efficient for arguments of very large size
+
+
+
+- **Python use neither of them above, python use pass by assignment**
+
+- The only exception is with global keyword
+
+  - ```python
+    def square():
+    	global x # This is equivalent to pass by reference (pointer)
+    	x = x**2
+    	
+    x = 2
+    square()
+    ```
+
+> 在Python中，参数传递的方式经常被描述为“pass by assignment”或“pass by object reference”。这种方式与其他编程语言中的“pass by value”和“pass by reference”略有不同。
+>
+> 要理解"pass by assignment"，你需要首先了解Python中的变量和对象是如何工作的：
+>
+> 1. **Python中的变量与对象**：在Python中，所有的数据（无论是数字、字符串、列表等）都是以对象的形式存储的。当你创建一个变量（例如，`a = 3`），实际上是发生了两件事：首先，一个`int`类型的对象`3`被创建；然后，变量`a`被分配给这个对象，使得`a`引用该对象。
+> 2. **参数传递的过程**：当你传递一个变量作为函数的参数时，实际上是将这个变量的引用（或说，指向对象的指针）传递给函数。也就是说，函数中的参数变量和外部传入的变量引用的是同一个对象。
+> 3. **不可变性与可变性**：这种传递方式在不可变对象（如`int`、`str`、`tuple`）和可变对象（如`list`、`dict`）中的行为是不同的。对于不可变对象，由于对象本身不可更改，所以任何更改尝试实际上会创建一个新对象；而对于可变对象，可以在函数内部直接修改对象的内容。
+>
+> 下面是一些示例来说明这一点：
+>
+> ```python
+> def modify(x):
+>     x += 1
+>     return x
+> 
+> a = 3
+> b = modify(a)
+> print(a)  # 输出：3
+> print(b)  # 输出：4
+> ```
+>
+> 在上面的例子中，虽然`x`在`modify`函数内部被修改了，但由于`int`是不可变的，所以`a`的值并没有改变。
+>
+> 再来看一个关于列表的例子：
+>
+> ```python
+> def modify_list(lst):
+>     lst.append(4)
+>     return lst
+> 
+> my_list = [1, 2, 3]
+> new_list = modify_list(my_list)
+> 
+> print(my_list)    # 输出：[1, 2, 3, 4]
+> print(new_list)   # 输出：[1, 2, 3, 4]
+> ```
+>
+> 在这个例子中，`my_list`在函数内部被修改，因为`list`是一个可变对象，所以原始的`my_list`也受到了影响。
+>
+> “pass by assignment”意味着函数参数接收的是原始变量引用的复制，而不是对象本身或对象的复制。
+
+> 总结：
+>
+> - pass by assignment类似于C++中传递一个指针的做法，但不完全相同
+> - 当你传递一个对象给函数时，你传递的是这个对象引用的一个拷贝(copy of object reference)。这意味着，函数内部的参数变量和外部的变量都指向同一个对象。
+> - 对于不可变对象（如`int`、`str`、`tuple`），由于它们的值不能更改，任何修改尝试都会创建新对象。因此，函数外部的原始变量不会受到影响。
+> - 对于可变对象（如`list`、`dict`），你可以在函数内部修改这个对象，从而也影响到函数外部的变量。
+> - 这种传递方式与C/C++的“pass by reference”有一些相似之处，但在Python中不使用“引用”或“值”这样的术语，因为每个变量都是一个对象的引用。所以，我们使用“pass by assignment”这个术语来描述Python的参数传递机制。
+
+![image-20230914153211704](https://images.wu.engineer/images/2023/09/14/image-20230914153211704.png)
+
+- Immutable Variable
+  - Can access global variable
+  - Cannot modify global variable unless declared global `global x`
+- Mutable Variable
+  - Can access global variable
+  - Can modify the variable
+    - Need to use `global   ` keyword that do not mutate objects
+    - No need to use `global ` keyword for methods that mutate objects
+
+### 7.5 Lists append and concatenation
+
+#### How are lists resized with append
+
+![image-20230914153529951](https://images.wu.engineer/images/2023/09/14/image-20230914153529951.png)
+
+![image-20230914153541330](https://images.wu.engineer/images/2023/09/14/image-20230914153541330.png)
+
+> 与C++中的`std::vector`原理非常相似
+>
+> Python的`list`是一个动态数组实现，它提供了平均时间复杂度为�(1)*O*(1)的尾部插入操作，即`append`方法。其背后的原理和C++的`std::vector`类似。以下是`list`的`append`操作的基本原理：
+>
+> 1. **预分配存储空间**：当你创建一个新的列表或向列表添加元素时，Python可能不仅仅为当前的元素分配空间，而是预分配额外的空间。这意味着，列表的内部存储容量可能比它当前持有的元素数量要大。
+> 2. **动态调整大小**：当向一个已经填满预分配空间的列表中再添加元素时，Python会为列表分配一个新的内存块，并可能比当前的内存块大一些。然后，Python会将旧的元素复制到新的内存块中，并释放旧的内存块。
+> 3. **平均时间复杂度**：由于预分配的存储空间和动态的大小调整，大多数`append`操作都是常数时间复杂度。但在某些情况下（例如，当需要动态调整大小时），`append`操作可能会需要更多的时间。然而，考虑到所有`append`操作，其平均时间复杂度仍然是�(1)*O*(1)。
+>
+> C++的`std::vector`也是一个动态数组实现，其原理非常类似。当你向`std::vector`中添加元素，导致其容量不足时，它会分配一个新的、更大的内存块，将旧的元素复制到新的内存块，并释放旧的内存块。因此，尽管单个`push_back`操作可能会花费更多的时间，但从平均意义上看，其时间复杂度也是�(1)*O*(1)。
+>
+> 因此，Python的`list`和C++的`std::vector`在实现上有很多相似之处，特别是它们如何动态地调整大小以支持快速的尾部插入操作。
+
+#### How are lists resized with concatenation 级联
+
+![image-20230914153918687](https://images.wu.engineer/images/2023/09/14/image-20230914153918687.png)
+
+#### Append vs Concatenation
+
+![image-20230914153943329](https://images.wu.engineer/images/2023/09/14/image-20230914153943329.png)
+
+#### Insertion/Deletion
+
+![image-20230914154008117](https://images.wu.engineer/images/2023/09/14/image-20230914154008117.png)
+
+### 7.6 List vs Tuple Conclusion
+
+![image-20230914154028809](https://images.wu.engineer/images/2023/09/14/image-20230914154028809.png)
+
 ## 8. Anonymous Functions
 
 
