@@ -1,8 +1,6 @@
-# IT5001 - Software Development Fundamentals
+# 0. Introductions
 
-## 0. Introductions
-
-### 0.0 Disclaimer and References
+## 0.0 Disclaimer and References
 
 - This repo is the self-organized warehouse for National University of Singapore, School of Computing, Course IT5001: Software Development Fundamentals.
 
@@ -14,7 +12,7 @@
 
 - **Do not share any content in this repo to anyone without permission, including course material, video, lab assignment and notes.**
 
-### 0.1 Software Development
+## 0.1 Software Development
 
 ![image-20230911144254896](https://images.wu.engineer/images/2023/09/11/image-20230911144254896.png)
 
@@ -24,7 +22,7 @@
 - Representations
   - Numbers, Strings, Arrays, Multi-dimensional arrays, Graphs, Trees
 
-### 0.2 Algorithm
+## 0.2 Algorithm
 
 - An **Algorithm** is a well-defined computational procedure consisting of **a set of instructions**, that takes some value or set of values as **input**, and produces some value or set of values as **output**.
 - The desired I/O relationship is specified by the statement of the **computational problem** for which the algorithm is designed.
@@ -47,9 +45,9 @@
 
 > Algorithms are **ideas**, program is the **final code on a machine**.
 
-## 1. Python and Basic Types
+# 1. Python and Basic Types
 
-### 1.1 Introduction to Built-in Types
+## 1.1 Introduction to Built-in Types
 
 ![image-20230911145105876](https://images.wu.engineer/images/2023/09/11/image-20230911145105876.png)
 
@@ -63,7 +61,7 @@
 >
 > 在python中，这一概念通常被built-in types所包含
 
-### 1.2 Numbers: Numeric Types
+## 1.2 Numbers: Numeric Types
 
 - Integers: `int`
 - Floats: `float`
@@ -89,7 +87,7 @@
 >
 > 由于浮点数的舍入误差，对 `float` 进行算术操作时需要小心。比如 `0.1 + 0.2` 在许多系统上并不等于 `0.3`，而是接近这个值的一个稍微不同的浮点数。
 
-### 1.3 Boolean Type
+## 1.3 Boolean Type
 
 ![image-20230911151419691](https://images.wu.engineer/images/2023/09/11/image-20230911151419691.png)
 
@@ -101,7 +99,7 @@
 > - 任何非空的对象，如字符串、列表、字典等，都被认为是`True`。
 > - 常见的被解释为`False`的值有：`None`、`0`、`0.0`、`0j`、`""`（空字符串）以及`[]`、`()`、`{}`（空的容器）等。
 
-### 1.4 Identifiers (Variable Names)
+## 1.4 Identifiers (Variable Names)
 
 - User-defined names for objects, can enhance readability
 
@@ -114,19 +112,19 @@
 
   ![image-20230911152057055](https://images.wu.engineer/images/2023/09/11/image-20230911152057055.png)
 
-### 1.5 Multiple Assignment
+## 1.5 Multiple Assignment
 
 ![image-20230911152125356](https://images.wu.engineer/images/2023/09/11/image-20230911152125356.png)
 
-### 1.6 Keywords
+## 1.6 Keywords
 
 ![image-20230911152243220](https://images.wu.engineer/images/2023/09/11/image-20230911152243220.png)
 
 - Keyword cannot be name of variables
 
-### 1.7 Operators
+## 1.7 Operators
 
-#### Arithmetic Operators
+### Arithmetic Operators
 
 ![image-20230911152402632](https://images.wu.engineer/images/2023/09/11/image-20230911152402632.png)
 
@@ -143,7 +141,7 @@
 - Narrower types is promoted to wider type
   - Integer is promoted to float
 
-#### Comparison Operators
+### Comparison Operators
 
 ![image-20230911152714292](https://images.wu.engineer/images/2023/09/11/image-20230911152714292.png)
 
@@ -174,27 +172,27 @@
 > True
 > ```
 
-#### Logical/Boolean Operators
+### Logical/Boolean Operators
 
 ![image-20230911153328300](https://images.wu.engineer/images/2023/09/11/image-20230911153328300.png)
 
-##### `and` Operator
+#### `and` Operator
 
 ![image-20230911153359818](https://images.wu.engineer/images/2023/09/11/image-20230911153359818.png)
 
-##### `or` Operator
+#### `or` Operator
 
 ![image-20230911153457176](https://images.wu.engineer/images/2023/09/11/image-20230911153457176.png)
 
-##### `not` Operator
+#### `not` Operator
 
 ![image-20230911153521444](https://images.wu.engineer/images/2023/09/11/image-20230911153521444.png)
 
-#### Augmented Assignment Operators
+### Augmented Assignment Operators
 
 ![image-20230911153702919](https://images.wu.engineer/images/2023/09/11/image-20230911153702919.png)
 
-### 1.8 Expressions
+## 1.8 Expressions
 
 - Expressions is a piece of syntax evaluated to some value
 - Combination of operators and operands
@@ -218,21 +216,21 @@
 >
 > 变量，数值，其二者的组合都可以是表达式
 
-### 1.9 Standard IO
+## 1.9 Standard IO
 
-#### Input
+### Input
 
 ![image-20230911154316848](https://images.wu.engineer/images/2023/09/11/image-20230911154316848.png)
 
-#### Output
+### Output
 
 ![image-20230911154329910](https://images.wu.engineer/images/2023/09/11/image-20230911154329910.png)
 
-### 1.10 Strings
+## 1.10 Strings
 
 - Strings are **indexed sequence of characters**
 
-#### Single quotes
+### Single quotes
 
 ```python
 >>> 'It is IT5001'
@@ -243,7 +241,7 @@
 "It's IT5001"
 ```
 
-#### Double quotes
+### Double quotes
 
 ```python
 >>> "It is IT5001"
@@ -254,24 +252,24 @@
 '"It is IT5001," said Alice'
 ```
 
-#### Triple quotes and triple double quotes
+### Triple quotes and triple double quotes
 
 ```python
 >>> '''"It is IT5001," said Alice. So, it's IT5001.'''
 '"It is IT5001," said Alice. So, it's IT5001.'
 ```
 
-#### String Operators
+### String Operators
 
 ![image-20230911155000848](https://images.wu.engineer/images/2023/09/11/image-20230911155000848.png)
 
 ![image-20230911155012775](https://images.wu.engineer/images/2023/09/11/image-20230911155012775.png)
 
-#### Built-in Sting Functions
+### Built-in Sting Functions
 
 ![image-20230911161859090](https://images.wu.engineer/images/2023/09/11/image-20230911161859090.png)
 
-#### Lexicographical Ordering
+### Lexicographical Ordering
 
 ![image-20230911161949960](https://images.wu.engineer/images/2023/09/11/image-20230911161949960.png)
 
@@ -289,7 +287,7 @@ Lexicographical Ordering 词典排序
 >3. **字符串长度**：如果两个字符串在某个位置的字符都相同，但一个字符串较短并且是另一个字符串的前缀（例如，“abc”和“abcd”），那么较短的字符串在词典排序中将位于前面。
 > 4. **应用范围**：词典排序不仅适用于字符串，还可应用于其他可以按元素逐一比较的数据结构，如列表或元组。
 
-#### String Indexing and Slicing
+### String Indexing and Slicing
 
 ![image-20230911162725147](https://images.wu.engineer/images/2023/09/11/image-20230911162725147.png)
 
@@ -307,11 +305,11 @@ Lexicographical Ordering 词典排序
 'i sT'
 ```
 
-#### Immutability of Strings
+### Immutability of Strings
 
 ![image-20230911162804966](https://images.wu.engineer/images/2023/09/11/image-20230911162804966.png)
 
-#### String Methods
+### String Methods
 
 ![image-20230911163157281](https://images.wu.engineer/images/2023/09/11/image-20230911163157281.png)
 
@@ -326,7 +324,7 @@ Lexicographical Ordering 词典排序
 'Abcd'
 ```
 
-#### f-strings
+### f-strings
 
 - Strings prefixed with ‘f’
   - `f'Hi {name}'`
@@ -347,7 +345,7 @@ Lexicographical Ordering 词典排序
 11.5
 ```
 
-#### Raw Strings
+### Raw Strings
 
 - Strings prefixed with literal ‘r’
 
@@ -359,11 +357,11 @@ IT5001
 This is \nIT5001
 ```
 
-### 1.11 Namespaces
+## 1.11 Namespaces
 
 ![image-20230911163754381](https://images.wu.engineer/images/2023/09/11/image-20230911163754381.png)
 
-#### Built-in
+### Built-in
 
 - Contains names of `_builtin_` module
   - Datatypes
@@ -375,11 +373,11 @@ This is \nIT5001
 - Check `dir(_builtins_)`
 - Will be created (destoryed) when Python interpreter starts (closes)
 
-#### Global
+### Global
 
 ![image-20230911164036586](https://images.wu.engineer/images/2023/09/11/image-20230911164036586.png)
 
-#### How objects stored?
+### How objects stored?
 
 ![image-20230911164101046](https://images.wu.engineer/images/2023/09/11/image-20230911164101046.png)
 
@@ -387,22 +385,22 @@ This is \nIT5001
 - If name is not in Global, then searches in builtin namespace
 - If name is also not in builtin, throws `NameError`
 
-### 1.12 Memory Management
+## 1.12 Memory Management
 
 - Python does memory management automatically
 - Private heap to store objects
 - Memory management depends on object type
 
-### 1.13 Data Model: Objects, Values and Types
+## 1.13 Data Model: Objects, Values and Types
 
 - Objects are Python’s abstraction for data
 - Data in program is represented by objects and relation between objects
 
 ![image-20230911164403158](https://images.wu.engineer/images/2023/09/11/image-20230911164403158.png)
 
-## 2. Functions
+# 2. Functions
 
-### 2.1 Abstraction
+## 2.1 Abstraction
 
 ![image-20230912192717225](https://images.wu.engineer/images/2023/09/12/image-20230912192717225.png)
 
@@ -412,7 +410,7 @@ This is \nIT5001
 
 ![image-20230912192957777](https://images.wu.engineer/images/2023/09/12/image-20230912192957777.png)
 
-#### Type of functions
+### Type of functions
 
 - Pure functions
 
@@ -434,9 +432,9 @@ This is \nIT5001
   h(x) = f(g(x))
   $$
 
-### 2.2 Python Modules and Packages
+## 2.2 Python Modules and Packages
 
-#### 2.2.1 Functions in Python
+### 2.2.1 Functions in Python
 
 - Built-in functions
   - Built-in module is loaded automatically
@@ -449,7 +447,7 @@ This is \nIT5001
 - Special function
   - `main()`
 
-#### 2.2.2 Import Modules and Packages
+### 2.2.2 Import Modules and Packages
 
 1. `import <module_name>`
 2. `from <module_name> import <names>`
@@ -471,7 +469,7 @@ from math import sin, pi
 >
 > 总之，虽然`from math import *`可以使你的代码看起来更简洁，但由于可能导致的命名冲突和代码的可读性问题，许多开发者推荐避免使用这种导入方式，而是选择`import math`或只导入所需的特定函数，例如`from math import sin, cos`。
 
-#### 2.2.3 Namespaces: Importing Modules
+### 2.2.3 Namespaces: Importing Modules
 
 **Import Single Module**
 
@@ -489,17 +487,17 @@ from math import sin, pi
 >
 > 在导入整个模块时，会导入整个模块的namespace，这个namespace在global namespace当中。然而当导入一个模块中的某个或多个函数时，这些函数会被导入到global namespace。
 
-### 2.3 User-Defined Functions
+## 2.3 User-Defined Functions
 
 ![image-20230912195454207](https://images.wu.engineer/images/2023/09/12/image-20230912195454207.png)
 
-#### 2.3.1 Arguments
+### 2.3.1 Arguments
 
 - Arguments is the input of the function, it allows function to receive data from the outside environment
 
 ![image-20230912200422206](https://images.wu.engineer/images/2023/09/12/image-20230912200422206.png)
 
-##### Type of Arguments
+#### Type of Arguments
 
 1. **位置参数（Positional Arguments）**:
 
@@ -567,7 +565,7 @@ from math import sin, pi
 >        return x + y
 >    ```
 
-#### 2.3.2 Return Statement
+### 2.3.2 Return Statement
 
 - It does two things
   1. Terminates the function
@@ -577,7 +575,7 @@ from math import sin, pi
 
 ![image-20230912200403892](https://images.wu.engineer/images/2023/09/12/image-20230912200403892.png)
 
-#### 2.3.3 Function Tracing
+### 2.3.3 Function Tracing
 
 ##### Namespace
 
@@ -595,7 +593,7 @@ from math import sin, pi
 
 ![image-20230912201550111](https://images.wu.engineer/images/2023/09/12/image-20230912201550111.png)
 
-#### 2.3.4 Doc String
+### 2.3.4 Doc String
 
 - Contains information about the function
   - Describes how to use the function
@@ -603,7 +601,7 @@ from math import sin, pi
 
 ![image-20230912200531566](https://images.wu.engineer/images/2023/09/12/image-20230912200531566.png)
 
-### 2.4 Pure Functions
+## 2.4 Pure Functions
 
 > Recall:
 >
@@ -638,11 +636,11 @@ print(z)
 >
 > 对于第二段函数，该函数取决于输入参数`x`和外部参数`y`。所以他不是一个pure function
 
-## 3. Control Structure (Selections and Loops)
+# 3. Control Structure (Selections and Loops)
 
 ![image-20230912205854358](https://images.wu.engineer/images/2023/09/12/image-20230912205854358.png)
 
-### 3.1 Selection
+## 3.1 Selection
 
 ```python
 if (condition): # If the condition is true, do the expression below
@@ -656,7 +654,7 @@ else: # The selection is still legal without "else"
 
 - In python, strongly follow the indentation (缩进)
 
-### 3.2 Repetition
+## 3.2 Repetition
 
 ```python
 while (condition): # Do the expression in the indentation if the condition is true
@@ -705,7 +703,7 @@ while n <= 10:
 
 > 在执行while loop时，程序会先判断条件，若条件为真则运行loop中的代码。
 
-### 3.3 Iteration
+## 3.3 Iteration
 
 **The act of repeating a process with the aim of approaching a desired goal, target or result**
 
@@ -716,16 +714,16 @@ while n <= 10:
      - Check all True (or check all False)
      - Find any True (or False)
 
-#### 3.3.1 For loop (Must run exactly N times)
+### 3.3.1 For loop (Must run exactly N times)
 
 - Use iterable objects to repeatedly execute a series of tasks
 - Number of repetitions are equal to number of items provided by iterable object
 
-##### Iterable and Iterators
+#### Iterable and Iterators
 
 ![image-20230912222536678](https://images.wu.engineer/images/2023/09/12/image-20230912222536678.png)
 
-##### Built-in iterable: `range()`
+#### Built-in iterable: `range()`
 
 - `range({start}, {stop}, {step})`
   - Generate sequence of numbers from `start` (inclusive) to `stop` (exclusive), incremented by `step`
@@ -748,7 +746,7 @@ Output:
 4
 ```
 
-#### 3.3.2 Run many number of times
+### 3.3.2 Run many number of times
 
 ```python
 def sumNumber():
@@ -771,7 +769,7 @@ sumNumber()
 - While loop terminate condition: `num = 'bye'`
   - If `num = 'bye'`, exit the while loop
 
-#### 3.3.3 Run at most N times (check all True)
+### 3.3.3 Run at most N times (check all True)
 
 ```python
 def checkAllAlpha(string):
@@ -790,7 +788,7 @@ def checkAllAlpha(string):
 
 - **In this case, the loop will most run `l` times, but it may less than `l` times.**
 
-#### 3.3.4 When use `for` and `while`?
+### 3.3.4 When use `for` and `while`?
 
 - `for`
   - You know how many times the loop will run
@@ -801,7 +799,7 @@ def checkAllAlpha(string):
   - The number of times is depended on the “condition”, in which, may change unpredictably inside the loop
   - E.g., while the player haven’t guess the right answer, keep guessing
 
-### 3.4 `break` & `continue`
+## 3.4 `break` & `continue`
 
 ```python
 for j in range(10):
@@ -837,11 +835,11 @@ print('done')
 done
 ```
 
-## 4. Functions Scope and Recursion
+# 4. Functions Scope and Recursion
 
-### 4.1 Scope
+## 4.1 Scope
 
-#### 4.1.1 Global & Local Variables
+### 4.1.1 Global & Local Variables
 
 - A variable which is defined in the main body of a file is called a **global variable**. It will be **visible throughout the file**, and also inside any file which imports that file
 - A variable which is defined inside a function is **local** to that function. It is accessible **from the point at which it is defined until the end of the function**, and exists for as long as the function is executing
@@ -857,17 +855,17 @@ def hello():
 
 ![image-20230913001120532](https://images.wu.engineer/images/2023/09/12/image-20230913001120532.png)
 
-##### Global Variable
+#### Global Variable
 
 ![image-20230913001202988](https://images.wu.engineer/images/2023/09/12/image-20230913001202988.png)
 
-##### Global Variable vs. Local Variable
+#### Global Variable vs. Local Variable
 
 ![image-20230913001239224](https://images.wu.engineer/images/2023/09/12/image-20230913001239224.png)
 
 ![image-20230913001314239](https://images.wu.engineer/images/2023/09/12/image-20230913001314239.png)
 
-#### 4.1.2 Crossing Boundary (change global variable in the function)
+### 4.1.2 Crossing Boundary (change global variable in the function)
 
 - Use `global` keyword to pass the global variable into the function
 
@@ -896,11 +894,11 @@ def foo():
 foo()
 ```
 
-### 4.2 Generator Functions
+## 4.2 Generator Functions
 
 ![image-20230913001719005](https://images.wu.engineer/images/2023/09/12/image-20230913001719005.png)
 
-#### 4.2.1 Return vs. Yield
+### 4.2.1 Return vs. Yield
 
 - With `return` statement:
   - State is not retained after the function returns the value
@@ -940,7 +938,7 @@ foo()
 
 ![image-20230913002243050](https://images.wu.engineer/images/2023/09/12/image-20230913002243050.png)
 
-### 4.3 Calling Other Functions
+## 4.3 Calling Other Functions
 
 ```python
 def hypotenuse(a,b):
@@ -961,7 +959,7 @@ def square(x):
 - Two examples above are equilibrium.
 - The order of enter and exit the function follows the principle of heap
 
-#### 4.3.1 Stack
+### 4.3.1 Stack
 
 ![image-20230913002638704](https://images.wu.engineer/images/2023/09/12/image-20230913002638704.png)
 
@@ -971,7 +969,7 @@ def square(x):
 
 ![image-20230913002711167](https://images.wu.engineer/images/2023/09/12/image-20230913002711167.png)
 
-#### 4.3.2 Namespaces
+### 4.3.2 Namespaces
 
 ![image-20230913010918426](https://images.wu.engineer/images/2023/09/12/image-20230913010918426.png)
 
@@ -979,7 +977,7 @@ def square(x):
 
 > When the function is executed and returned the result value, the namespace of this function will be vanished.
 
-### 4.4 Recursion
+## 4.4 Recursion
 
 - A function that calls itself
 
@@ -987,7 +985,7 @@ def square(x):
 
   - > Divide and conquer
 
-#### 4.4.1 Recursive Function
+### 4.4.1 Recursive Function
 
 - Function calls itself
 
@@ -1002,17 +1000,17 @@ print(fractorial(4))
 
 ![image-20230913011204651](https://images.wu.engineer/images/2023/09/12/image-20230913011204651.png)
 
-#### 4.4.2 Namespaces
+### 4.4.2 Namespaces
 
 ![image-20230913011227729](https://images.wu.engineer/images/2023/09/12/image-20230913011227729.png)
 
 ![image-20230913011236255](https://images.wu.engineer/images/2023/09/12/image-20230913011236255.png)
 
-## 5. Recursion VS. Iteration
+# 5. Recursion VS. Iteration
 
-### 5.1 Reversing a String
+## 5.1 Reversing a String
 
-#### 5.1.1 Iterative Version 1
+### 5.1.1 Iterative Version 1
 
 ```python
 def reverseStringI(s):
@@ -1028,7 +1026,7 @@ def reverseStringI(s):
 
 ![image-20230913011726729](https://images.wu.engineer/images/2023/09/12/image-20230913011726729.png)
 
-#### 5.1.2 Iterative Version 2
+### 5.1.2 Iterative Version 2
 
 ```python
 def reverseString(s):
@@ -1043,7 +1041,7 @@ def reverseString(s):
 
 ![image-20230913200315114](https://images.wu.engineer/images/2023/09/13/image-20230913200315114.png)
 
-#### 5.1.3 Recursive Version
+### 5.1.3 Recursive Version
 
 ```python
 def reverseString(s):
@@ -1094,13 +1092,13 @@ def reverseString(s):
 >
 > 一般来说，现阶段优选迭代(iterative)。然而对于一个问题能够拆分为许多个小问题的情况下(divide and conquer)，递归(recursive)更有逻辑意义，然而这并不代表递归是最好的选择。事实上，对于分而治之的问题，动态规划(dynamic programming)是更好的选择。
 
-### 5.2 Code Refactoring
+## 5.2 Code Refactoring
 
 - Refactoring is a disciplined technique for restructuring an existing body of code, altering its internal structure without changing its external behavior.
 
 ![image-20230913210337455](https://images.wu.engineer/images/2023/09/13/image-20230913210337455.png)
 
-### 5.3 Nested Functions
+## 5.3 Nested Functions
 
 ![image-20230913210544963](https://images.wu.engineer/images/2023/09/13/image-20230913210544963.png)
 
@@ -1108,23 +1106,23 @@ def reverseString(s):
 
 - Inner functions **can access** global variables **but cannot modify** them.
 
-#### 5.3.1 Global Keyword
+## 5.3.1 Global Keyword
 
 ![image-20230913210657898](https://images.wu.engineer/images/2023/09/13/image-20230913210657898.png)
 
-## 6. Bugs and Debugging
+# 6. Bugs and Debugging
 
 - Syntax Error
   - A syntax error is an error in the source code of a program. Since computer programs **must follow strict syntax** to compile correctly, any aspects of the code that do not conform to the syntax of the programming language will produce a syntax error
 
-### 6.1 Debugging
+## 6.1 Debugging
 
 - Means to remove errors from a program
 - After debugging, the program is **not necessarily error-free**
   - It just means that whatever errors remain are harder to find
   - This is especially true for large applications
 
-#### 6.2 IDLE Debugger
+## 6.2 IDLE Debugger
 
 ![image-20230913211915969](https://images.wu.engineer/images/2023/09/13/image-20230913211915969.png)
 
@@ -1145,7 +1143,7 @@ def reverseString(s):
 
 ![image-20230913212751620](https://images.wu.engineer/images/2023/09/13/image-20230913212751620.png)
 
-### 6.2 Common Types of Errors
+## 6.3 Common Types of Errors
 
 ![image-20230913212833106](https://images.wu.engineer/images/2023/09/13/image-20230913212833106.png)
 
@@ -1159,26 +1157,26 @@ def reverseString(s):
 
 ![image-20230913212903939](https://images.wu.engineer/images/2023/09/13/image-20230913212903939.png)
 
-### 6.3 Summary
+## 6.4 Summary
 
 - Compound data helps us to reason at a higher conceptual level
 - Abstraction barriers separate usage of a compound data from its implementation
 - Only functions at the interface should be used
 - We can choose between different implementations as long as contract is fulfilled
 
-## 7. Data Collections (Sequences)
+# 7. Data Collections (Sequences)
 
-### 7.1 Indexed Collection
+## 7.1 Indexed Collection
 
 - Lists and Tuples are both belongs to a type of data structure called arrays
 - **Lists are mutable (can modify the data) and is dynamic arrays**
 - **Tuples are immutable (cannot modify the data) and is static arrays**
 
-#### 7.1.1 Strings
+### 7.1.1 Strings
 
 - Mentioned in previous chapter
 
-#### 7.1.2 Lists
+### 7.1.2 Lists
 
 - Ordered sequence of data types
   - Homogeneous sequence. Lists can be:
@@ -1197,7 +1195,7 @@ def reverseString(s):
 
 ![image-20230913225341543](https://images.wu.engineer/images/2023/09/13/image-20230913225341543.png)
 
-##### Mutable
+#### Mutable
 
 - Elements can be replaced
 - Elements can be added `append()`
@@ -1210,11 +1208,11 @@ def reverseString(s):
   - `sorted()`
 - Elements can be reversed
 
-##### Dynamic-size Arrays
+#### Dynamic-size Arrays
 
 ![image-20230913225814915](https://images.wu.engineer/images/2023/09/13/image-20230913225814915.png)
 
-##### `append()` vs. concatenation 级联
+#### `append()` vs. concatenation 级联
 
 ```python
 my_list_1 = [1,2,3,4]
@@ -1244,7 +1242,7 @@ my_list_1
 >    - 当你想在列表的末尾添加一个元素时，使用`append()`。
 >    - 当你想将两个列表组合成一个新的列表时，使用`级联（连接）`。
 
-##### String to Lists (and vice-versa)
+#### String to Lists (and vice-versa)
 
 ```python
 my_string = "IT5001"
@@ -1261,7 +1259,7 @@ a = my_string[0]
 
 ![image-20230913230553213](https://images.wu.engineer/images/2023/09/13/image-20230913230553213.png)
 
-##### Aliasing vs Cloning
+#### Aliasing vs Cloning
 
 ![image-20230913230747490](https://images.wu.engineer/images/2023/09/13/image-20230913230747490.png)
 
@@ -1304,7 +1302,7 @@ a = my_string[0]
 >
 > 理解`aliasing`和`cloning`在编程中非常重要，因为对列表的错误操作可能会导致预期之外的结果。例如，当你无意中使用了列表的别名并进行了修改，这可能会影响到程序的其他部分，导致难以追踪的错误。
 
-##### `sort()` vs `sorted()`
+#### `sort()` vs `sorted()`
 
 ![image-20230913230954159](https://images.wu.engineer/images/2023/09/13/image-20230913230954159.png)
 
@@ -1323,17 +1321,17 @@ a = my_string[0]
 >    - 使用 `sort()` 时，原始列表会被修改。
 >    - 使用 `sorted()` 时，原始可迭代对象保持不变。
 
-##### `reverse()`
+#### `reverse()`
 
 ![image-20230913231044029](https://images.wu.engineer/images/2023/09/13/image-20230913231044029.png)
 
-##### List of anything
+#### List of anything
 
 ![image-20230913231117499](https://images.wu.engineer/images/2023/09/13/image-20230913231117499.png)
 
 ![image-20230913231125413](https://images.wu.engineer/images/2023/09/13/image-20230913231125413.png)
 
-##### Iterable
+#### Iterable
 
 ```python
 for i in [0,1,2,3,4]:
@@ -1350,7 +1348,7 @@ Element at index 2 is 3
 Element at index 3 is 4
 ```
 
-##### Mutation and Iteration
+#### Mutation and Iteration
 
 - Avoid mutating a list while iterating over the list
 
@@ -1387,7 +1385,7 @@ for element in myList:
 > 3. **非列表输入**： 尽管函数名是`findMax`，这个函数实际上可以处理任何可迭代的输入，如元组、集合等。考虑是否需要对输入类型进行检查或者更改函数名称以反映其更广泛的功能。
 > 4. **内置函数**： Python已经提供了一个内置的`max`函数来获取可迭代对象中的最大值。除非有特定的原因（例如，你需要自定义比较逻辑或其他操作），否则通常推荐使用内置的`max`函数。
 
-##### List Comprehensions
+#### List Comprehensions
 
 - Provides a concise way to apply an operation to the items in iterable object and store the result as a list
 - Syntax
@@ -1422,7 +1420,7 @@ for i in range(2,8):
 > 4. **"Returns an iterable"**:
 >    - 这意味着列表推导式的结果是一个可迭代的对象，具体来说，就是一个列表。
 
-##### Generator Expressions
+#### Generator Expressions
 
 - Provides a generator that can be used to iterate over without explicitly generating the list of items
 - Syntax:
@@ -1454,7 +1452,7 @@ print(f'Size of generator {sys.getsizeof(square_generator)}') # Output: 120
 > 5. **"Requires less memory than list"**:
 >    - 由于生成器表达式不会一次性生成所有的结果，而是在每次迭代时按需生成，因此它比等效的列表推导式占用更少的内存。
 
-#### 7.1.3 Tuples
+### 7.1.3 Tuples
 
 - A static and an immutable array/list
 - Syntax:
@@ -1469,7 +1467,7 @@ print(f'Size of generator {sys.getsizeof(square_generator)}') # Output: 120
 
 ![image-20230913233340146](https://images.wu.engineer/images/2023/09/13/image-20230913233340146.png)
 
-##### Lists and Tuples
+#### Lists and Tuples
 
 - Similarities:
   - List and tuple are:
@@ -1482,7 +1480,7 @@ print(f'Size of generator {sys.getsizeof(square_generator)}') # Output: 120
 
 ![image-20230913233522261](https://images.wu.engineer/images/2023/09/13/image-20230913233522261.png)
 
-##### Tuple with only one element
+#### Tuple with only one element
 
 ```python
 tuple1 = (3,)
@@ -1490,16 +1488,16 @@ print(tuple1) # Output: (3,)
 tuple1[0] # Output: 3
 ```
 
-#### 7.1.4 Lists vs Tuples
+### 7.1.4 Lists vs Tuples
 
 - List
   - Usually stores a large collection of data with the same type
 - Tuple
   - Usually stores a small collections of items with various data types
 
-### 7.2 Non-indexed Collection
+## 7.2 Non-indexed Collection
 
-#### 7.2.1 Sets
+### 7.2.1 Sets
 
 - A set is an **unordered** collection of **immutable** elements with **no duplicate** elements
   - Unordered: Cannot get a single element by its index, like `s[2]`
@@ -1542,11 +1540,11 @@ for i in my_set:
 3
 ```
 
-##### Set from list and Vice-versa
+#### Set from list and Vice-versa
 
 ![image-20230913234439182](https://images.wu.engineer/images/2023/09/13/image-20230913234439182.png)
 
-#### 7.2.2 Dictionary
+### 7.2.2 Dictionary
 
 - You search for the key in the dictionary
 - Each key has a **correspondent** 相应的 value
@@ -1587,7 +1585,7 @@ for i in my_set:
 
 ![image-20230913235219858](https://images.wu.engineer/images/2023/09/13/image-20230913235219858.png)
 
-### 7.3 Hashability and Immutability
+## 7.3 Hashability and Immutability
 
 ![image-20230914145311450](https://images.wu.engineer/images/2023/09/14/image-20230914145311450.png)
 
@@ -1625,24 +1623,24 @@ for i in my_set:
 >
 >    在Python中，所有不可变的原生数据类型（如`int`、`float`、`str`和`tuple`）都是可散列的。这也意味着，这些类型的对象可以被用作集合的键或元素。但这并不意味着所有不可变对象都是可散列的，或者所有可散列的对象都是不可变的。不过，在常见的原生数据类型中，这两个特性往往是同时出现的。
 
-#### Return Multiple Values
+### 7.3.1 Return Multiple Values
 
 ![image-20230914145509171](https://images.wu.engineer/images/2023/09/14/image-20230914145509171.png)
 
-#### If don’t know the number of argument
+### 7.3.2 If don’t know the number of argument
 
 ![image-20230914145541870](https://images.wu.engineer/images/2023/09/14/image-20230914145541870.png)
 
 ![image-20230914145606792](https://images.wu.engineer/images/2023/09/14/image-20230914145606792.png)
 
-#### Accessing Global Variables
+### 7.3.3 Accessing Global Variables
 
 - Can a function access(read-only) a global variable?
   - Yes, for both mutable and immutable variables
 
 ![image-20230914145702904](https://images.wu.engineer/images/2023/09/14/image-20230914145702904.png)
 
-#### Modifying Global Variables
+### 7.3.4 Modifying Global Variables
 
 - Can a function modify a global variable with variable declared **global** within local function?
   - Yes, for both mutable and immutable variables
@@ -1657,7 +1655,7 @@ for i in my_set:
 
 ![image-20230914150009942](https://images.wu.engineer/images/2023/09/14/image-20230914150009942.png)
 
-### 7.4 Argument passed to Functions
+## 7.4 Argument passed to Functions
 
 - Pass by value (regular method)
   - An independent (duplicate) copy of argument is passed as input
@@ -1742,9 +1740,9 @@ for i in my_set:
     - Need to use `global   ` keyword that do not mutate objects
     - No need to use `global ` keyword for methods that mutate objects
 
-### 7.5 Lists append and concatenation
+## 7.5 Lists append and concatenation
 
-#### How are lists resized with append
+### 7.5.1 How are lists resized with append
 
 ![image-20230914153529951](https://images.wu.engineer/images/2023/09/14/image-20230914153529951.png)
 
@@ -1762,23 +1760,23 @@ for i in my_set:
 >
 > 因此，Python的`list`和C++的`std::vector`在实现上有很多相似之处，特别是它们如何动态地调整大小以支持快速的尾部插入操作。
 
-#### How are lists resized with concatenation 级联
+### 7.5.2 How are lists resized with concatenation 级联
 
 ![image-20230914153918687](https://images.wu.engineer/images/2023/09/14/image-20230914153918687.png)
 
-#### Append vs Concatenation
+### 7.5.3 Append vs Concatenation
 
 ![image-20230914153943329](https://images.wu.engineer/images/2023/09/14/image-20230914153943329.png)
 
-#### Insertion/Deletion
+### 7.5.4 Insertion/Deletion
 
 ![image-20230914154008117](https://images.wu.engineer/images/2023/09/14/image-20230914154008117.png)
 
-### 7.6 List vs Tuple Conclusion
+## 7.6 List vs Tuple Conclusion
 
 ![image-20230914154028809](https://images.wu.engineer/images/2023/09/14/image-20230914154028809.png)
 
-## 8. Anonymous Functions
+# 8. Anonymous Functions
 
 - Traditional Form:
   - `square(x) -> x^2`
@@ -1789,7 +1787,7 @@ for i in my_set:
 - Python Syntax:
   - `lambda args: {expression}`
 
-### 8.1 Functions: Traditional Math vs $\lambda$-Calculus vs Python
+## 8.1 Functions: Traditional Math vs $\lambda$-Calculus vs Python
 
 ![image-20230914160209922](https://images.wu.engineer/images/2023/09/14/image-20230914160209922.png)
 
@@ -1811,7 +1809,310 @@ for i in my_set:
 # input args (x,y,z), then output the result of the expressions
 ```
 
-## 9. High Order Functions
+# 9. High Order Functions
 
+## 9.1 Functions in Python
 
+- Functions can be
+  - Assigned to variables
+  - Passed as arguments to functions
+  - Returned from functions
 
+> 这段话描述的是Python中函数的一等公民（first-class citizen）特性。在计算机科学中，如果一个语言的函数被视为一等公民，这意味着函数可以被像其他基本数据类型（如整数、字符串）那样使用。
+
+## 9.2 Functions can be assigned to variables
+
+### 9.2.1 Callability
+
+- Normal variables are not **callability**
+
+![image-20230914190310747](https://images.wu.engineer/images/2023/09/14/image-20230914190310747.png)
+
+- A function is **callable**
+
+![image-20230914190336830](https://images.wu.engineer/images/2023/09/14/image-20230914190336830.png)
+
+### 9.2.2 Variable store a function
+
+- Normal variables can store values
+- Variable can also store a function
+
+![image-20230914190436636](https://images.wu.engineer/images/2023/09/14/image-20230914190436636.png)
+
+> **Assigned to variables**: 在Python中，你可以将一个函数赋值给一个变量。这个变量现在可以像原始的函数那样被调用。
+>
+> ```python
+> def greet():
+>     return "Hello!"
+> 
+> say_hello = greet
+> print(say_hello())  # 输出: Hello!
+> ```
+>
+> 在上面的示例中，我们定义了一个函数`greet`，然后将它赋值给`say_hello`变量。现在，`say_hello`也可以被调用并执行与`greet`相同的功能。
+
+![image-20230914190510841](https://images.wu.engineer/images/2023/09/14/image-20230914190510841.png)
+
+> 当把函数赋给变量时，函数名称后带不带括号`()`有很大的区别
+>
+> 1. **`say_hello = greet`**:
+>
+>    这里你将`greet`函数本身赋值给了`say_hello`变量。此后，你可以使用`say_hello()`来调用这个函数。在这种情况下，`say_hello`变成了`greet`函数的一个引用或别名。
+>
+>    ```python
+>    def greet():
+>        return "Hello!"
+>    
+>    say_hello = greet
+>    print(say_hello())  # 输出: Hello!
+>    ```
+>
+> 2. **`say_hello = greet()`**:
+>
+>    这里你首先调用了`greet`函数，并将它的**返回值**赋值给了`say_hello`变量。如果`greet`函数的返回值是一个字符串"Hello!"，那么`say_hello`将会存储这个字符串值。
+>
+>    ```python
+>    def greet():
+>        return "Hello!"
+>    
+>    say_hello = greet()
+>    print(say_hello)  # 输出: Hello!
+>    ```
+>
+>    注意这里的差异：`say_hello`是一个字符串，而不是一个函数，所以你不需要括号来访问它的值。
+>
+> 总结：`say_hello = greet`是函数引用的赋值，使`say_hello`成为一个函数；而`say_hello = greet()`是函数调用的结果的赋值，使`say_hello`持有这个结果。
+>
+> 如果`greet`函数需要参数，当您尝试`say_hello = greet()`（没有提供所需的参数）时，您会收到一个错误，因为在调用函数时没有提供必要的参数。
+
+- When a function assigned to a variable, their ID are identical
+
+```python
+def inc_func(x):
+	return x+1
+	
+my_func = inc_func
+
+print( id(my_func) == id(inc_func) ) # Output: True
+```
+
+### 9.2.3 Functions stored in variables
+
+```python
+>>> from math import cos, sin, tan
+>>> f_1 = cos
+>>> f_1(0) # Equivalent to cos(0)
+1.0
+>>> print(f_1) # The type is function
+<built-in function cos>
+ 
+>>> def f():
+		print("Hello")
+>>> print(f)
+<function f at 0x000000F9F93F4950>
+```
+
+### 9.2.4 Functions as elements in Lists/Tuples
+
+```python
+from math import cos, sin, tan
+def inc_func(x):
+	return x+1
+mylist = [cos, sin, tan, inc_func, print]
+x = my_list[3](1) # Equilavent to int_func(1)
+print(x) # Output: 2
+```
+
+```python
+from math import cos, sin, tan
+my_func_list = [cos, sin, tan]
+theta = pi/3
+output = [func(theta) for func in my_func_list]
+print(output) # Output: [0.5000000000000001, 0.866025..., 1.7320...]
+```
+
+### 9.2.5 Functions as elements in dictionaries
+
+```python
+def square(n):
+	return n**2
+	
+def power(n,k):
+	return n**k
+	
+my_func_dict = {square: None, power: 5} # Function as key
+
+output = []
+for func, parameter in my_func_dict.items():
+	output.append(func(2) if parameter == None else func(2, parameter))
+	
+pirnt(output)
+```
+
+## 9.3 Functions can be passed as arguments to functions
+
+![image-20230914192207363](https://images.wu.engineer/images/2023/09/14/image-20230914192207363.png)
+
+> **Passed as arguments to functions**: 函数可以作为参数传递给其他函数。这在函数式编程中尤其有用，例如使用`map()`或`filter()`函数。
+>
+> ```python
+> def square(x):
+>     return x * x
+> 
+> numbers = [1, 2, 3, 4]
+> squared_numbers = list(map(square, numbers))
+> print(squared_numbers)  # 输出: [1, 4, 9, 16]
+> ```
+>
+> 在此示例中，我们将`square`函数作为第一个参数传递给`map()`函数。
+
+## 9.4 Functions can be returned from functions
+
+> **Returned from functions**: 函数可以从其他函数中返回。这使我们可以创建所谓的“高阶函数”。
+>
+> ```python
+> def power(n):
+>     def compute(x):
+>         return x ** n
+>     return compute
+> 
+> square = power(2)
+> cube = power(3)
+> 
+> print(square(4))  # 输出: 16
+> print(cube(2))    # 输出: 8
+> ```
+>
+> 在上面的示例中，`power`函数返回了一个内部函数`compute`。根据`power`函数接收的参数，返回的函数具有不同的行为。
+>
+> 总的来说，这段话突出了Python中函数的灵活性和功能性。由于函数在Python中是一等公民，你可以像处理其他对象一样处理它们，这为各种编程模式和技术提供了可能性。
+
+- Functions can return inner functions as output
+
+- Inner functions serves many purpose
+
+  - Closures
+
+    - Returns inner functions
+    - Function plus the environment (state) in which they execute together
+    - Preserve function state across function calls
+    - Example:
+
+    ![image-20230914192757812](https://images.wu.engineer/images/2023/09/14/image-20230914192757812.png)
+
+  - Decorators
+
+    - Decorator is a closure
+      - Additionally, outer function accepts a function as input argument
+    - Modifying input function’s behavior with an inner function without explicitly changing input function’s code
+
+    - Example:
+
+      ![image-20230914193121622](https://images.wu.engineer/images/2023/09/14/image-20230914193121622.png)
+
+> 内部函数在Python中有多种用途。以下描述了其中的两种主要用途：闭包和装饰器。
+>
+> 1. **Closures**:
+>
+>    闭包是一个特殊类型的函数，它记住了创建它的环境的状态。
+>
+>    - **Returns inner functions**: 闭包的外部函数返回一个内部函数。
+>    - **Function plus the environment (state) in which they execute together**: 这意味着闭包不仅仅是一个函数；它还包括函数执行时的环境或状态。
+>    - **Preserve function state across function calls**: 尽管函数通常在调用结束后不保留状态，但闭包允许我们在连续的调用之间保留一些状态。
+>
+>    ```python
+>    def counter():
+>        count = 0
+>        def increment():
+>            nonlocal count
+>            count += 1
+>            return count
+>        return increment
+>    
+>    c = counter()
+>    print(c())  # 1
+>    print(c())  # 2
+>    ```
+>
+>    在上面的例子中，每次调用`c()`时，它都会记住`count`的状态。
+>
+> 2. **Decorators**:
+>
+>    装饰器是一种特殊类型的闭包，用于修改或增强其他函数的行为，而无需修改那些函数的代码。
+>
+>    - **Decorator is a closure**: 所有的装饰器都是闭包，因为它们都返回函数并记住自己的环境状态。
+>    - **Additionally, outer function accepts a function as input argument**: 装饰器的外部函数接受一个函数作为输入参数。
+>    - **Modifying input function’s behavior with an inner function without explicitly changing input function’s code**: 这是装饰器的主要用途。它允许我们增强或修改一个函数的行为，而无需修改该函数的源代码。
+>
+>    ```python
+>    def simple_decorator(f):
+>        def wrapper():
+>            print("Before function call")
+>            f()
+>            print("After function call")
+>        return wrapper
+>    
+>    @simple_decorator
+>    def say_hello():
+>        print("Hello!")
+>    
+>    say_hello()
+>    
+>    ```
+>
+>    输出：
+>
+>    ```python
+>    Before function call
+>    Hello!
+>    After function call
+>    
+>    ```
+>
+>    在上面的例子中，装饰器`simple_decorator`修改了`say_hello`函数的行为，使其在调用前后都打印了额外的信息。
+
+## 9.5 Function Composition
+
+- In math, we can do something like: $log(sin(x))$
+- In python, we can also done this
+
+![image-20230914193812464](https://images.wu.engineer/images/2023/09/14/image-20230914193812464.png)
+
+## 9.6 Lambda in functions
+
+> `lambda`在Python中用于创建匿名函数，也就是没有名称的简短函数。`lambda`函数的语法结构非常简洁，只包含一个表达式。这种函数在需要短暂使用函数对象的地方非常有用。
+>
+> ### 基本语法：
+>
+> ```
+> lambda arguments: expression
+> ```
+>
+> 注意：
+>
+> - `lambda`定义的函数可以接受任意数量的参数，但只能有一个表达式。
+> - 表达式的值就是该函数的返回值。
+
+![image-20230914194846415](https://images.wu.engineer/images/2023/09/14/image-20230914194846415.png)
+
+```python
+>>> f = lambda a,b: lambda x: b(b(a))
+>>> f('b', lambda a: a*3)(lambda a: a[:1])
+'''
+('b', lambda a: a*3) are two argument for the first lambda argument a and b
+The argument a has character 'b', and the argument b has lambda expression 'lambda a: a*3'
+(lambda a: a[:1]) is the argument for the second lambda argument x
+So in this case, the expression b(b(a)) will be first executed
+The result will be: 
+- The inner b(a) = 'b' * 3 = 'bbb'
+- The outer b() = 'bbb' * 3 = 'bbbbbbbbb'
+Then, the lambda x will be executed, which is 'bbbbbbbbb'[:1] = 'b'
+The output is 'b'
+'''
+```
+
+![image-20230914195713852](https://images.wu.engineer/images/2023/09/14/image-20230914195713852.png)
+
+![image-20230914195720379](https://images.wu.engineer/images/2023/09/14/image-20230914195720379.png)
+
+![image-20230914195725746](https://images.wu.engineer/images/2023/09/14/image-20230914195725746.png)
