@@ -1,0 +1,31 @@
+- immutable(Cannot change): int, float, bool, string, tuple
+- mutable: list, set, dict
+- bool false: `False`, `None`, `0`, `0.0`, `0j`, `“”` (empty string), `[]` (empty list) `{}` (empty dict), `range(0)`, `set()` (empty set)
+- Operators: 
+  - `x // y` -> floored quotient of x and y (3 // 2 = 1)
+  - `is not` -> negated object identity `id(a) != id(b)`
+- String:
+  - `'b' in 'banana'` -> True
+  - `len('hi')` -> 2
+  - `chr(123)` -> ‘{’ (Unicode to character)
+  - `ord('{')` -> 123 (Character to ASCII)
+  - `'IT5001'[0::3]` -> I0 (Start from ‘I’, skip two)
+  - ` 'IT5001'[-1]` -> 1 (last one)
+  - ` 'IT5001'[1:3:1]` -> T50 (Start from the second, end at the fourth, no skip)
+  - ` 'I' not in 'IT5001'` -> False (Case sensitive)
+- Namespace
+  - Built-in: built-in names, `print`, `int`, `NameError`
+  - Global: global variables
+  - Enclosed: for variables in inside function (wrapped in a function)
+  - Local: For variables in functions
+    - Each imported module has its own namespace, parallel with local
+
+- Import function
+  - `import math`: import whole math class, when use objects need to type `math.sin()`
+  - `from math import sin`: import sin object, when use only type `sin()`
+- Arguments:
+  - Positional argument: number and order of the argument is important
+  - Keyword argument: order is not important `func(x=2, z='123', y=1234)`
+  - Default/optional argument: can be omitted, has default value
+- Pure function: function without side-effect(I/O task); only mapping; output depend only on input (can not use global variables)
+- 
