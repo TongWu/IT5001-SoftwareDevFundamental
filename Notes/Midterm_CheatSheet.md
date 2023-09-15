@@ -9,9 +9,10 @@
   - `len('hi')` -> 2
   - `chr(123)` -> ‘{’ (Unicode to character)
   - `ord('{')` -> 123 (Character to ASCII)
+  - `‘string’[0::1]` -> First number: start (inclusive), Second number: end (**exclusive**), Third number: interval(skip no. of character-1)
   - `'IT5001'[0::3]` -> I0 (Start from ‘I’, skip two)
   - ` 'IT5001'[-1]` -> 1 (last one)
-  - ` 'IT5001'[1:3:1]` -> T50 (Start from the second, end at the fourth, no skip)
+  - ` 'IT5001'[1:3:1]` -> T50 (Start from the second, end at the third, no skip)
   - ` 'I' not in 'IT5001'` -> False (Case sensitive)
 - Namespace
   - Built-in: built-in names, `print`, `int`, `NameError`
@@ -28,4 +29,11 @@
   - Keyword argument: order is not important `func(x=2, z='123', y=1234)`
   - Default/optional argument: can be omitted, has default value
 - Pure function: function without side-effect(I/O task); only mapping; output depend only on input (can not use global variables)
+- `while(x<10)`: when x<10, keep running. Once x>=10, stop
+- Function can read global variable directly, modify global variable by `global x`
+- Generator Function: `return` is changed to `yield`. `yield` will pause the function, keep the state and resume when the next calling (the value of variable will keep)
+- Recursive: Calling itself, solve smaller problem (divide & conquer), more running time for function calling. Often use DP instead of recursive
+- Iterative: for or while loop, faster
+
+- Inner function: can read global and outer function variable. Can modify global variable by `global x`, can modify **nearest enclosing namespace (outer function) **by `nonlocal x`
 - 
