@@ -1874,7 +1874,7 @@ for i in my_set:
 >    ```python
 >    def greet():
 >        return "Hello!"
->    
+>       
 >    say_hello = greet()
 >    print(say_hello)  # 输出: Hello!
 >    ```
@@ -2051,13 +2051,13 @@ pirnt(output)
 >            f()
 >            print("After function call")
 >        return wrapper
->    
+>       
 >    @simple_decorator
 >    def say_hello():
 >        print("Hello!")
->    
+>       
 >    say_hello()
->    
+>       
 >    ```
 >
 >    输出：
@@ -2066,7 +2066,7 @@ pirnt(output)
 >    Before function call
 >    Hello!
 >    After function call
->    
+>       
 >    ```
 >
 >    在上面的例子中，装饰器`simple_decorator`修改了`say_hello`函数的行为，使其在调用前后都打印了额外的信息。
