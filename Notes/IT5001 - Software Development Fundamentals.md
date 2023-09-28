@@ -1874,7 +1874,7 @@ for i in my_set:
 >    ```python
 >    def greet():
 >        return "Hello!"
->       
+>          
 >    say_hello = greet()
 >    print(say_hello)  # 输出: Hello!
 >    ```
@@ -2051,13 +2051,13 @@ pirnt(output)
 >            f()
 >            print("After function call")
 >        return wrapper
->       
+>          
 >    @simple_decorator
 >    def say_hello():
 >        print("Hello!")
->       
+>          
 >    say_hello()
->       
+>          
 >    ```
 >
 >    输出：
@@ -2066,7 +2066,7 @@ pirnt(output)
 >    Before function call
 >    Hello!
 >    After function call
->       
+>          
 >    ```
 >
 >    在上面的例子中，装饰器`simple_decorator`修改了`say_hello`函数的行为，使其在调用前后都打印了额外的信息。
@@ -2116,3 +2116,53 @@ The output is 'b'
 ![image-20230914195720379](https://images.wu.engineer/images/2023/09/14/image-20230914195720379.png)
 
 ![image-20230914195725746](https://images.wu.engineer/images/2023/09/14/image-20230914195725746.png)
+
+# 10. File I/O
+
+## 10.1 Writing a file
+
+![image-20230927205318692](https://images.wu.engineer/images/2023/09/27/image-20230927205318692.png)
+
+```python
+# Output:
+This is my first lineThis is my second line
+```
+
+![image-20230927205411010](https://images.wu.engineer/images/2023/09/27/image-20230927205411010.png)
+
+```python
+def writing_something():
+	with open('my_file.txt', 'w') as f:
+		f.write('This is my first line' + '\n')
+		f.write('This is my second line' + '\n')
+
+write_something()
+```
+
+```python
+# Output:
+This is my fist line
+This is my second line
+```
+
+### 10.1.1Different file opening mode
+
+| Modes | Description                                                  |
+| ----- | ------------------------------------------------------------ |
+| r     | Opens a file for **reading only**. The file pointer is placed at the beginning of the file. This is the **default mode** |
+| rb    | Opens a file for reading only in **binary format**. The file pointer is placed at the beginning of the file. This is the default mode. |
+| r+    | Opens a file for **both reading and writing**. The file pointer placed at the beginning of the file. |
+| rb+   | Opens a file for both reading and writing in **binary format**. The file pointer placed at the beginning of the file. |
+| w     | Opens a file for **writing only**. Overwrites the file if the file exists. If the file does not exist, creates a new file for writing. |
+| wb    | Opens a file for writing only in binary format. Overwrites the file if the file exists. If the file does not exist, creates a new file for writing. |
+| w+    | Opens a file for **both writing and reading**. Overwrites the file if the file exists. If the file does not exist, creates a new file for reading and writing. |
+| wb+   | Opens a file for both writing and reading in **binary format**. Overwrites the file if the file exists. If the file does not exist, creates a new file for reading and writing. |
+| a     | Open a file for **appending**. The file pointer is at the **end of the file** if the file exists. That is, the file is in append mode. If the file does not exist, it creates a new file for writing |
+| ab    | Open a file for **appending in binary format**. The file pointer is at the **end of the file** if the file exists. That is, the file is in append mode. If the file does not exist, it creates a new file for writing |
+| a+    | Open a file for **appending and reading**. The file pointer is at the **end of the file** if the file exists. That is, the file is in append mode. If the file does not exist, it creates a new file for reading and writing |
+| ab+   | Open a file for **appending and reading in binary format**. The file pointer is at the **end of the file** if the file exists. That is, the file is in append mode. If the file does not exist, it creates a new file for reading and writing |
+
+## 10.2 Reading a file
+
+![image-20230927210425743](https://images.wu.engineer/images/2023/09/27/image-20230927210425743.png)
+
