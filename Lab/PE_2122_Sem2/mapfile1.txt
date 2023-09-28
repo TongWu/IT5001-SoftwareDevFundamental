@@ -1,0 +1,6 @@
+CountryA VillageA IntersectionB StationC
+VillageA BuildingD TowerE
+IntersectionB TowerE BuildingD
+StationC deadend
+TowerE capitalB
+BuildingD capitalB
