@@ -1,0 +1,57 @@
+1|2|3
+-----
+4|5|6
+-----
+7|8|9
+
+Player X move:5
+1|2|3
+-----
+4|X|6
+-----
+7|8|9
+
+Player O move:1
+O|2|3
+-----
+4|X|6
+-----
+7|8|9
+
+Player X move:1
+Invalid move!
+Player X move:4
+O|2|3
+-----
+X|X|6
+-----
+7|8|9
+
+Player O move:6
+O|2|3
+-----
+X|X|O
+-----
+7|8|9
+
+Player X move:7
+O|2|3
+-----
+X|X|O
+-----
+X|8|9
+
+Player O move:2
+O|O|3
+-----
+X|X|O
+-----
+X|8|9
+
+Player X move:3
+O|O|X
+-----
+X|X|O
+-----
+X|8|9
+Player X won!
