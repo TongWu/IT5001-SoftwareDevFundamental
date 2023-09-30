@@ -3,13 +3,13 @@
 def local_peak_array_version(survey):
     ptr1 = 0
     ptr2 = 1
-    while survey[ptr2]:
+    while ptr2<len(survey)-1:
         if survey[ptr1] < survey[ptr2]:
             ptr1 += 1
             ptr2 += 1
         else:
             return ptr1
-    return ''
+    return ptr2
 
 
 # print(local_peak_array_version([4,5,2,7,8,2,1,2,3,4,8]))
@@ -47,9 +47,9 @@ def local_peak_function_version(a, b, survey):
 
 
 survey1 = lambda i: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11][i]
-print(local_peak_function_version(0, 10, survey1))
+print(local_peak_array_version([0,1,2,3,4,5]))
 #survey3 = lambda i: [1, 2, 3, 4, 5, 6, 5, 4, 3, 2][i % 10]
 #print(local_peak_function_version(1, 9, survey3))
 #print(local_peak_function_version(11, 19, survey3))
 survey2 = lambda i: i if i <= 1234567890 else (1234567890*2) - i - 1
-print(local_peak_function_version(0,12345678900,survey2))
+#print(local_peak_function_version(0,12345678900,survey2))
