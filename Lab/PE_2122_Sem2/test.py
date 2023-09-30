@@ -1,6 +1,1 @@
-part1 = ['#.#','.#.','#.#']
-num = []
-for element in part1:
-        num.append(list(element))
-
-print(num)
+print(1 in [1,2])
