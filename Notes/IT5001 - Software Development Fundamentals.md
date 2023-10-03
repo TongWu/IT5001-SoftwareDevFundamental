@@ -2578,4 +2578,166 @@ Output:
 
 ![image-20231003143916618](https://images.wu.engineer/images/2023/10/03/image-20231003143916618.png)
 
-# 
+# 11. Multi-dimensional Array
+
+![image-20231003191808401](https://images.wu.engineer/images/2023/10/03/image-20231003191808401.png)
+
+## 11.1 2-Dimensional Array in Python
+
+```python
+# 1-D array
+>>> l = [1,2,3,4,5]
+>>> l[3]
+4
+```
+
+```python
+# 2-D array
+>>> m = [[1,2],[3,4]]
+>>> m[0][0]
+1
+>>> m[0][1]
+2
+>>> m[1][0]
+3
+>>> m[1][1]
+4
+```
+
+### Create an N x N identical matrix
+
+```python
+def identityMatrix(N):
+	output = []
+	for i in range(N):
+		row = []
+		for j in range(N):
+			row.append(1 if i==j else 0)
+		output.append(row)
+	return output
+	
+pprint(identityMatrix(10))
+```
+
+- Output:
+
+![image-20231003194202777](https://images.wu.engineer/images/2023/10/03/image-20231003194202777.png)
+
+### 2-D looping
+
+- Let’s say we just want to print 0 and 1
+
+```python
+def mTightPrint(m):
+	for i in range(len(m)):
+		line = ''
+		for j in range(len(m[0])):
+			line += str(m[i][j])
+		print(line)
+
+mTightPrint(m1)
+```
+
+- Output:
+
+![image-20231003194346235](https://images.wu.engineer/images/2023/10/03/image-20231003194346235.png)
+
+### R x C Zero Matrix
+
+```python
+def createZeroMatrix(r, c):
+	output = []
+	for i in range(N):
+		row = []
+		for j in range(N):
+			row.append(1 if i==j else 0)
+		output.append(row)
+	return output
+	
+>>> m = identityMatrix(4,9)
+>>> pprint(m)
+[[0,0,0,0,0,0,0,0,0]
+ [0,0,0,0,0,0,0,0,0]
+ [0,0,0,0,0,0,0,0,0]
+ [0,0,0,0,0,0,0,0,0]]
+>>> m[1][3] = 9
+>>> m[3][7] = 6
+>>> pprint(m)
+[[0,0,0,0,0,0,0,0,0]
+ [0,0,0,9,0,0,0,0,0]
+ [0,0,0,0,0,0,0,0,0]
+ [0,0,0,0,0,0,0,6,0]]
+```
+
+### Matrix Addition, Multiplication, Transpose
+
+```python
+def sumMatrices(m1,m2):
+	r = len(m1)
+	c = len(m1[0])
+	output = createZeroMatrix(r,c)
+	for i in range(r):
+		for j in range(c):
+			output[i][j] = m1[i][j] + m2[i][j]
+	return output
+	
+def multiplyMatrices(m1, m2):
+    if len(m1[0]) != len(m2):
+        raise ValueError("The number of columns in the first matrix must be equal to the number of rows in the second matrix.")
+
+    result = [[0 for j in range(len(m2[0]))] for i in range(len(m1))]
+
+    for i in range(len(m1)):
+        for j in range(len(m2[0])):
+            for k in range(len(m1[0])):
+                result[i][j] += m1[i][k] * m2[k][j]
+    return result
+    
+def matrix_transpose(m):
+    result = [[0 for j in range(len(m))] for i in range(len(m[0]))]
+
+    for i in range(len(m)):
+        for j in range(len(m[0])):
+            result[j][i] = m[i][j]
+    return result
+```
+
+## 11.2 Tables
+
+![image-20231003195910289](https://images.wu.engineer/images/2023/10/03/image-20231003195910289.png)
+
+```python
+>>> records = [['John', 'A1000000A', 90, 80, 100, 70],
+			   ['Peter', 'A1000009D', 60, 100, 60, 90],
+			   ['Paul', 'A1000003C', 80, 80, 70, 90],
+			   ['Mary', 'A1000001B', 100, 70, 80, 80]]
+>>> records[2][5] = 100
+>>> pprint(records)
+[['John', 'A1000000A', 90, 80, 100, 70],
+ ['Peter', 'A1000009D', 60, 100, 60, 90],
+ ['Paul', 'A1000003C', 80, 80, 70, 100],
+ ['Mary', 'A1000001B', 100, 70, 80, 80]]
+>>> colIndex = {'name': 0, 'SN':1, 'eng':2, 'math':3, 'sci':4, 'sos':5}
+>>> records[3][colIndex['eng']] = 0
+>>> pprint(records)
+[['John', 'A1000000A', 90, 80, 100, 70],
+ ['Peter', 'A1000009D', 60, 100, 60, 90],
+ ['Paul', 'A1000003C', 80, 80, 70, 100],
+ ['Mary', 'A1000001B', 0, 70, 80, 80]]
+>>> records.append(['Seon', 'A1000004Z', 70, 80, 70, 80])
+>>> pprint(records)
+[['John', 'A1000000A', 90, 80, 100, 70],
+ ['Peter', 'A1000009D', 60, 100, 60, 90],
+ ['Paul', 'A1000003C', 80, 80, 70, 100],
+ ['Mary', 'A1000001B', 0, 70, 80, 80]
+ ['Seon', 'A1000004Z', 70, 80, 70, 80]]
+>>> scoreSumEng = 0
+>>> for i in range(len(records)):
+		scoreSumEng += records[i][colIndex['eng']]
+>>> print(scoreSumEng/len(records))
+60.0
+```
+
+## 11.3 2D-Array with CSV
+
+![image-20231003200814131](https://images.wu.engineer/images/2023/10/03/image-20231003200814158.png)
