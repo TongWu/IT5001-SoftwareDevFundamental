@@ -2117,9 +2117,216 @@ The output is 'b'
 
 ![image-20230914195725746](https://images.wu.engineer/images/2023/09/14/image-20230914195725746.png)
 
-## 9.7 Sequences and Higher Order Functions
+# 9b Sequences and Higher Order Functions
 
-### 9.7.1 Scaling a Sequence
+## 9b.1 `map()`: Scaling a Sequence
+
+- Scale by 2 use iteration and recursion:
+  - `[5,1,4,9,11,22,12,55]` to `[10,2,8,18,22,44,24,110]`
+
+```python
+def seqScaleI(seq, n):
+	output = []
+	for i in seq:
+		output.append(i*n)
+	return output
+	
+def seqScaleR(seq, n):
+	if not seq:
+		return seq
+	return [seq[0]*n]+seqScaleR(seq[1:],n)
+```
+
+- Use `map()`:
+
+```python
+>>> lst = [5,1,4,9,11,22,12,55]
+>>> list(map(lambda x:2*x, lst))
+[10,2,8,18,22,44,24,110]
+```
+
+> **用途**：`map` 函数用于将指定函数应用于给定序列的每个元素。
+>
+> **语法**：
+>
+> ```python
+> map(function, iterable, ...)
+> ```
+>
+> - `function`: 是一个函数，将应用于每个项上。
+> - `iterable`: 是一个或多个迭代对象。
+
+- The map object is actually an ‘iterable’
+  - After you took out items from the map object, the items will be ‘gone’
+  - Conversion from a map object to a tuple or list for only once
+
+```python
+>>> tup = (1,-2,3)
+>>> map1 = map(abs,tup)
+>>> map1
+<map object at 0x112e61438>
+>>> type(map1)
+<class 'map'>
+>>> map1Tuple = tuple(map1)
+>>> map1Tuple
+(1,2,3)
+>>> map1List = list(map1)
+>>> map1List
+[]
+```
+
+## 9b.2 `filter()`: filter out items
+
+- Python’s `map()`: Apply a function `f` to every item `x` in the sequence
+- Python’s `filter()`:
+  - Apply a predicate function `f` to every item `x` in the sequence
+    - A predicate is a function that return `True` or `False`
+  - Return an iterable that
+    - Keep the item if `f(x)` returns `True`
+    - Remove the item otherwise
+
+```python
+>>> l = [1,2,3,'a',(1,2),('b',3)]
+>>> filter(lambda x:type(x)==int, l)
+<filter object at 0x112e618d0>
+>>> list(filter(lambda x:type(x)==int, l))
+[1,2,3]
+>>> l = [1,2,'a',(1,2),6,('b',3),999]
+>>> list(filter(lambda x:type(x)==int, l))
+[1,2,6,999]
+>>> list(filter(lambda x:type(x)==str, l))
+['a']
+>>> l2 = [1,4,5,-4,9,-99,0,32,-9]
+>>> list(filter(lambda x:x<0, l2))
+[-4,-99,-9]
+```
+
+```python
+def is_even(x):
+    return x % 2 == 0
+
+numbers = [1, 2, 3, 4, 5, 6]
+result = filter(is_even, numbers)
+print(list(result))  # 输出：[2, 4, 6]
+```
+
+## 9b.3 Counting a Sequence: Shallowly or Deeply
+
+### Shallow Count
+
+- How to count the number of element in a sequence?
+
+```python
+>>> lst = [5,1,4,9,11,22,12,55]
+>>> len(lst)
+8
+```
+
+- Of course we can use `len()`
+- But what if we want to implement it ourselves?
+
+```python
+def seqCountR(seq):
+	if not seq:
+		reurn 0
+	return 1+seqCountR(seq[1:])
+```
+
+- However, it’s shallow
+- Total count = count of the **first item + count of the rest**
+  - But the count of the first item is always 1
+
+```python
+>>> lst2 = [1,2,3,[4,5,6,7]]
+>>> seqCountR(lst2)
+4
+>>> len(lst2)
+4
+```
+
+### Deep Count
+
+- Total count = count of the first item + count of the rest
+  - But the count of the first item is only 1 if it is not a sequence
+- `[1,2,3,4,[2,3,4],[1]]`
+  - The first item has a count 1
+- [[1,2],3,4,5]
+  - The first item does not has a count 1 since it is a list
+- How to check the first item is a list or not?
+  - `type(seq[0]) == list`
+- What to do if the first item is a sequence?
+  - recursively compute `deepcount()` of the first item
+
+```python
+def deepcount(seq):
+	if seq == []:
+		return 0
+	elif type(seq) != list:
+		return 1
+	else:
+		return deepcount(seq[0]) + deepcount(seq[1:])
+```
+
+![image-20231003162600192](https://images.wu.engineer/images/2023/10/03/image-20231003162600192.png)
+
+### Deep Map
+
+```python
+def deepMap(func,seq):
+	if seq == []:
+		return seq
+	elif type(seq) != list
+		return func(seq)
+	else:
+		return [deepSquare(func,seq[0])] + deepSquare(func,seq[1:])
+```
+
+## 9b.4 Copy sequence shallowly or deeply
+
+### `copy()` and `DeepCopy()`
+
+- `copy()`
+
+```python
+>>> l = [1,2,3,[1,2],[2,3,4,[1,2,3]],[3,4,5]]
+>>> l2 = l.copy()
+>>> l2
+[1,2,3,[1,2],[2,3,4,[1,2,3]],[3,4,5]]
+>>> l[3][0] = 999
+>>> l2
+[1,2,3,[999,2],[2,3,4,[1,2,3]],[3,4,5]]
+>>> l
+[1,2,3,[999,2],[2,3,4,[1,2,3]],[3,4,5]]
+```
+
+- `DeepCopy()`
+
+```python
+>>> l2 = deepMap(lambda x:x.copy() if type(x)==list else x,l)
+>>> l2
+[1,2,3,[1,2],[2,3,4,[1,2,3]],[3,4,5]]
+>>> l[3][0] = 999
+>>> l
+[1,2,3,[999,2],[2,3,4,[1,2,3]],[3,4,5]]
+>>> l2
+[1,2,3,[1,2],[2,3,4,[1,2,3]],[3,4,5]]
+```
+
+## 9b.5 `flatten()`: Just be shallow
+
+```python
+def flatten(seq):
+	if seq == []:
+		return seq
+	elif type(seq) != list:
+		return [seq]
+	else:
+		return flatten(seq[0]) + flatten(seq[1:])
+		
+l = [1,2,3,[1,2],[2,3,4,[1,2,3]],[3,4,5]]
+print(flatten(l))
+# Output: [1,2,3,1,2,2,3,4,1,2,3,3,4,5]
+```
 
 
 
