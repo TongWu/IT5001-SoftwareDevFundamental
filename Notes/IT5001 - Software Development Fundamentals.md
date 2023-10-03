@@ -1874,7 +1874,7 @@ for i in my_set:
 >    ```python
 >    def greet():
 >        return "Hello!"
->          
+>             
 >    say_hello = greet()
 >    print(say_hello)  # 输出: Hello!
 >    ```
@@ -2051,13 +2051,13 @@ pirnt(output)
 >            f()
 >            print("After function call")
 >        return wrapper
->          
+>             
 >    @simple_decorator
 >    def say_hello():
 >        print("Hello!")
->          
+>             
 >    say_hello()
->          
+>             
 >    ```
 >
 >    输出：
@@ -2066,7 +2066,7 @@ pirnt(output)
 >    Before function call
 >    Hello!
 >    After function call
->          
+>             
 >    ```
 >
 >    在上面的例子中，装饰器`simple_decorator`修改了`say_hello`函数的行为，使其在调用前后都打印了额外的信息。
@@ -2117,6 +2117,12 @@ The output is 'b'
 
 ![image-20230914195725746](https://images.wu.engineer/images/2023/09/14/image-20230914195725746.png)
 
+## 9.7 Sequences and Higher Order Functions
+
+### 9.7.1 Scaling a Sequence
+
+
+
 # 10. File I/O
 
 ## 10.1 Writing a file
@@ -2145,7 +2151,7 @@ This is my fist line
 This is my second line
 ```
 
-### 10.1.1Different file opening mode
+### 10.1.1 Different file opening mode
 
 | Modes | Description                                                  |
 | ----- | ------------------------------------------------------------ |
@@ -2164,5 +2170,205 @@ This is my second line
 
 ## 10.2 Reading a file
 
+### 10.2.1 Read the whole file
+
 ![image-20230927210425743](https://images.wu.engineer/images/2023/09/27/image-20230927210425743.png)
 
+Use the function `split()` to separate the string into a list of strings by a separater
+
+- If you do not put any argument for `split()`, the default separators are space and newline `\n`
+
+```python
+>>> with open('student_marks.txt') as f:
+	data = f.read() # Read the whole file into the variable 'data'
+>>> data
+'John 70\nMary 50\nJoe 67\nFrank 90\nGru 99\nKiki 63'
+# \n is new line character
+>>> data.split()
+['John', '70', 'Mary', '50', 'Joe', '67', 'Frank', '90', 'Gru', '99', 'Kiki', '63']
+```
+
+- Extract all the scores
+
+```python
+>>> data.split()
+['John', '70', 'Mary', '50', 'Joe', '67', 'Frank', '90', 'Gru', '99', 'Kiki', '63']
+>>> max(data.split())
+'Mary'
+>>> all_score = [int(i) for i in data.split()[1::2]] # Starting from the second position and step two
+>>> all_score
+[70, 50, 67, 90, 99, 63]
+>>> max(all_score)
+99
+```
+
+- Reading one whole file into a string is not ‘healthy’
+  - Your file can be a few MB or even GB
+  - Then this line of code will run in a very long time, may even end in crashing the whole program or even the system
+  - Better way to do is to read the file line-by-line
+
+### 10.2.2 Read the file line-by-line
+
+```python
+def read_line_by_line():
+	with open('student_marks.txt') as f:
+		for line in f:
+			print(line)
+# Output:
+John 70
+Mary 50
+Joe 67
+Frank 90
+Gru 99
+Kiki 63
+```
+
+- If do it in Python shell:
+
+```python
+>>> with open('student_marks.txt') as f:
+		for line in f:
+			print(line)
+			
+'John 70\n'
+'Mary 50\n'
+'Joe 67\n'
+'Frank 90\n'
+'Gru 99\n'
+'Kiki 63\n'
+```
+
+- The file variable `f` is iterable
+- When do it in Python Shell, annoying newline character `\n` consist
+
+> 当你使用`print`函数打印字符串时，它默认会添加一个换行符。而当你从文件读取每一行时，每行本身就包含一个换行符。因此，当你直接打印读取的行时，它会显示两个换行符。
+>
+> 为了避免打印额外的换行符，你可以使用`str.strip()`方法来去除每行末尾的换行符。这样，`print`函数只会在打印后添加一个换行符。
+>
+> 这是修改后的代码：
+>
+> ```python
+> with open('student_marks.txt') as f:
+>     for line in f:
+>         print(line.strip())
+> ```
+>
+> 通过这种方式，输出的结果不会有额外的换行符。
+
+### 10.2.3 `rstrip()`: Strip characters on the right
+
+```python
+>>> with open('crude-birth-rate.csv') as f:
+		line1 = f.readline().rstrip('\n')
+		line2 = f.readline().rstrip('\n')
+		line3 = f.readline().rstrip('\n')
+		print(line1)
+		print(line2)
+		print(line3)
+year,level_1,value
+1960,Crude Birth Rate,37.5
+1961,Crude Birth Rate,35.2
+```
+
+> `rstrip()` 是一个Python字符串方法，用于删除字符串末尾的指定字符。当不传递任何参数给该方法时，它默认会删除字符串末尾的所有空白字符，其中包括空格、制表符、换行符和回车符。
+>
+> 示例：
+>
+> 1. **删除末尾空白字符**：
+>
+>    ```python
+>    text = "Hello, World!   \n"
+>    stripped_text = text.rstrip()
+>    print(stripped_text)  # 输出："Hello, World!"
+>    ```
+>
+> 2. **删除末尾特定字符**： 如果你提供了一个参数，`rstrip()` 将会删除字符串末尾的所有这些指定字符。
+>
+>    ```python
+>    text = "example.com///"
+>    stripped_text = text.rstrip('/')
+>    print(stripped_text)  # 输出："example.com"
+>    ```
+>
+> 注意：`rstrip()` 只会删除字符串**末尾**的字符，并不会删除字符串中间的字符。此外，它返回一个新的字符串（因为字符串在Python中是不可变的），并不会修改原始字符串。
+
+### 10.2.4 String `rstrip()` and `split()`
+
+```python
+>>> string = '555555 Hello Everybody!!! 55555'
+>>> string.rstrip('5')
+'555555 Hello Everybody!!! '
+>>> string.lstrip('5')
+' Hello Everybody!!! 55555'
+>>> string.lstrip('5').rstrip('5')
+' Hello Everybody!!! '
+>>>
+>>> string.split()
+['555555', 'Hello', 'Everybody!!!', '55555']
+>>> string.split('o')
+['555555 Hell', 'Everyb', 'dy!!! 55555']
+```
+
+> 1. **strip()**:
+>
+>    - **目的**：删除字符串的首尾字符。
+>
+>    - **默认行为**：如果没有指定任何参数，它将删除字符串的首尾空白字符（如空格、制表符、换行符等）。
+>
+>    - **使用方法**：
+>
+>      ```python
+>      text = "  Hello, World!  "
+>      stripped_text = text.strip()
+>      print(stripped_text)  # 输出："Hello, World!"
+>      ```
+>
+>    - 如果指定了参数，它将删除字符串首尾的所有这些指定字符：
+>
+>      ```python
+>      text = "###Hello, World!###"
+>      stripped_text = text.strip('#')
+>      print(stripped_text)  # 输出："Hello, World!"
+>      ```
+>
+> 2. **split()**:
+>
+>    - **目的**：将字符串分割成多个子字符串。
+>
+>    - **默认行为**：如果没有指定任何参数，它将按空白字符（如空格、制表符、换行符等）来分割字符串。
+>
+>    - **使用方法**：
+>
+>      ```python
+>      text = "Hello, World! How are you?"
+>      split_text = text.split()
+>      print(split_text)  # 输出：['Hello,', 'World!', 'How', 'are', 'you?']
+>      ```
+>
+>    - 如果指定了分隔符作为参数，它将使用该分隔符来分割字符串：
+>
+>      ```python
+>      text = "apple,banana,grape"
+>      split_text = text.split(',')
+>      print(split_text)  # 输出：['apple', 'banana', 'grape']
+>      ```
+>
+> **总结**：
+>
+> - `strip()` 用于删除字符串的首尾字符。
+> - `split()` 用于将字符串分割成一个列表，其中包含多个子字符串。
+
+### 10.2.5 Reading CSV Files
+
+```python
+>>> birth_file = open('crude-birth-rate.csv')
+>>> birth_file_reader = csv.reader(birth_file)
+>>> birth_data = list(birth_file_reader)
+>>> pprint(birth_data)
+```
+
+Output:
+
+![image-20231003143916618](https://images.wu.engineer/images/2023/10/03/image-20231003143916618.png)
+
+# 
