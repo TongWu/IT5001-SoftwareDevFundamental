@@ -1874,7 +1874,7 @@ for i in my_set:
 >    ```python
 >    def greet():
 >        return "Hello!"
->                   
+>                      
 >    say_hello = greet()
 >    print(say_hello)  # 输出: Hello!
 >    ```
@@ -2051,13 +2051,13 @@ pirnt(output)
 >            f()
 >            print("After function call")
 >        return wrapper
->                   
+>                      
 >    @simple_decorator
 >    def say_hello():
 >        print("Hello!")
->                   
+>                      
 >    say_hello()
->                   
+>                      
 >    ```
 >
 >    输出：
@@ -2066,7 +2066,7 @@ pirnt(output)
 >    Before function call
 >    Hello!
 >    After function call
->                   
+>                      
 >    ```
 >
 >    在上面的例子中，装饰器`simple_decorator`修改了`say_hello`函数的行为，使其在调用前后都打印了额外的信息。
@@ -2117,7 +2117,7 @@ The output is 'b'
 
 ![image-20230914195725746](https://images.wu.engineer/images/2023/09/14/image-20230914195725746.png)
 
-# 9b Sequences and Higher Order Functions
+# 9b. Sequences and Higher Order Functions
 
 ## 9b.1 `map()`: Scaling a Sequence
 
@@ -3283,4 +3283,267 @@ def fibi(n):
 		fibminus2, fibminus1 = fibminus1, fibminus1 + fibminus2
 	return fibminus1
 ```
+
+# 15. Exceptions
+
+## 15.1 Types of Errors
+
+- There are two kinds of errors in Python:
+  1. Syntax Errors
+  2. Exceptions
+
+### 15.1.1 Syntax Errors
+
+```python
+>>> while True print('Hello world')
+SyntaxError: invalid syntax
+```
+
+### 15.1.2 Exceptions
+
+- Errors detected during execution are called exceptions
+- Examples:
+
+| Type of Exception | Description                                            |
+| ----------------- | ------------------------------------------------------ |
+| NameError         | If an identifier is used before assignment             |
+| TypeError         | If wrong type of parameter is sent to a function       |
+| ValueError        | If function parameter has invalid value (Eg: log(-1) ) |
+| ZeroDivisionError | If 0 is used as divisor                                |
+| StopIteration     | Raised by next(iter)                                   |
+| IndexError        | If index is out of bound for a sequence                |
+| KeyError          | If non-existent key is requested for set or dictionary |
+| IOError           | If I/O operation fails (Eg: opening a file)            |
+| EOFError          | If end of file is reached for console of file input    |
+| AttributeError    | If an undefined attribute of an object is used         |
+
+#### NameError
+
+```python
+>>> 4 + spam*3
+Traceback (most recent call last):
+	File "<pyshell#4>", line 1, in <module>
+		4 + spam*3
+NameError: name 'spam' is not defined
+```
+
+#### TypeError
+
+```python
+>>> '2' + 2
+Traceback (most recent call last):
+	File "<pyshell#5>", line 1, in <module>
+        '2' + 2
+TypeError: Can't convert 'int' object to str implicitly
+```
+
+#### ValueError
+
+```python
+>>> int('one')
+Traceback (most recent call last):
+	File "<pyshell#2>", line 1, in <module>
+		int('one')
+ValueError: invalid literal for int() with base 10: 'one'
+```
+
+#### ZeroDivisionError
+
+```python
+>>> 10 * (1/0)
+Traceback (most recent call last):
+	File "<pyshell#3>", line 1, in <module>
+		10 * (1/0)
+ZeroDivisionError: division by zero
+```
+
+#### Other Common Errors
+
+![image-20231004224533019](https://images.wu.engineer/images/2023/10/04/image-20231004224533019.png)
+
+## 15.2 Handling Exceptions
+
+1. Use Guard Clauses
+2. Use Try-Except-Else constructs
+
+### 15.2.1 Guard Clauses
+
+- Guard is a Boolean expression that must evaluate to `True` if the program execution is to continue in the branch in question
+
+#### Raising Exceptions
+
+- The `raise` statement allows the programmer to force a specific exception to occur
+
+```python
+>>> raise NameError('HiThere')
+Traceback (most recent call last):
+	File "<stdin>", line 1, in ?
+NameError: HiThere
+```
+
+```python
+def add_two_integers(x,y):
+    if not isinstance(x,int):
+        raise TypeError('First argument must be of type integer')
+    if not isinstance(y,int):
+        raise TypeError('Second argument must be of type integer')
+    return x+y
+```
+
+```python
+def add_two_numbers(x,y):
+    if not isinstance(x,(int,float)): # Checking for multiple types
+        raise TypeError('First argument must be numerics')
+    if not isinstance(y,(int,float)):
+        raise TypeError('Second argument must be numerics')
+    return x+y
+```
+
+#### Use with caution
+
+- Python can raise exceptions without explicit guard clauses
+- Checking for a specific exception may consume resources
+  - Especially if it is done within a loop with several iterations
+
+### 15.2.2 Try-Except-Else Constructs
+
+- The simplest way to catch and handle exceptions is with a try-except block:
+
+```python
+x, y = 5, 0
+try:
+	z = x/y
+except ZeroDivisionError:
+	print('divide by zero')
+```
+
+- The `try` clause is executed
+- If an exception occurred, skip the rest of the `try` clause, to a matching `except` clause
+- If no exception occurs, the `except` clause is skipped (go to the `else` clause, if it exists)
+- The `finally` clause is always executed before leaving the `try` statement, whether an exception has occurred or not
+
+#### Try-Except
+
+- A `try` clause may have more than 1 `except` clause, to specify handlers for different exception
+- At most one handler will be executed
+- Similar to if-elif-else
+- `finally` will always be executed
+
+![image-20231004225801594](https://images.wu.engineer/images/2023/10/04/image-20231004225801594.png)
+
+```python
+def divide_test(x,y):
+	try:
+		result = x/y
+	except ZeroDivisionError:
+		print("division by zero!")
+	else:
+		print('result is', result)
+	finally:
+		print("executing finally clause")
+		
+>>> divide_test(2,1)
+result is 2.0
+executing finally clause
+
+>>> divide_test(2,0)
+division by zero!
+executing finally clause
+
+>>> divide_test("2","1")
+executing finally clause
+Traceback (most recent call last):
+	File "<stdin>", line 1, in ?
+	File "<stdin>", line 3, in divide
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+```
+
+#### Multiple Exceptions
+
+```python
+import math
+def my_function(x,y):
+	try:
+		return math.log(x)/y
+	except ValueError:
+		print('First argument must be nonzero positive; returning nan')
+		return float("NaN")
+	except ZeroDivisionError:
+		print('Second argument must be nonzero; returning nan')
+		return float("NaN")
+```
+
+```python
+import math
+def my_function_1(x,y):
+	try:
+		return math.log(x)/y
+	except (ZeroDivisionError, ValueError):
+		print('First argument must be nonzero positive; returning nan')
+		print('Second argument must be nonzero; returning nan')
+		return float("NaN")
+```
+
+#### Checking for ALL exceptions
+
+```python
+import math
+def my_function(x,y):
+	try:
+		return math.log(x)/y
+	except Exception as e:
+		print(e)
+		return float("NaN")
+```
+
+## 15.3 User-defined Exceptions
+
+```python
+class MyError(Exception):
+	def __init__(self, value):
+		self.value = value
+	def __str__(self):
+		return repr(self.value)
+```
+
+```python
+try:
+	raise MyError(2*2)
+except MyError as e:
+	print('Exception value:', e.value)
+# Output: Exception value: 4
+```
+
+```python
+raise MyError('oops!')
+Traceback (most recent call last):
+	File "<stdin>", line 1, in ?
+__main__.MyError: 'oops!'
+```
+
+## 15.4 Assertion
+
+- If the statement in the assertion is False, then EXCEPTIONS
+  - Raises an `AssertionError`
+
+> 在编程中，`assertion`（断言）是一种运行时的检查，用于测试程序中的某些假设是否为真。如果该假设为真，则程序继续执行；如果为假，则程序会引发一个特定的异常（在Python中是`AssertionError`）。
+>
+> 断言常用于调试和开发阶段，以确保程序的某些部分按预期运行。它们不应用于处理运行时错误，因为断言可以在全局优化标志下被禁用。
+>
+> 在Python中，你可以使用`assert`语句来添加断言：
+>
+> ```python
+> def add_positive_numbers(a, b):
+>     assert a > 0 and b > 0, "Both numbers should be positive"
+>     return a + b
+> ```
+>
+> 在上述函数中，`assert`语句检查两个数字是否都为正数。如果不是，它会引发一个`AssertionError`，并附带给定的错误消息 "Both numbers should be positive"。
+>
+> 需要注意的是，虽然断言在开发和调试时非常有用，但在生产代码中依赖断言来处理错误可能不是一个好主意，因为：
+>
+> 1. 断言可以通过使用`-O`（优化）标志来禁用Python解释器而被关闭。
+> 2. 使用专门的异常处理机制（例如`try`/`except`块）更加明确和灵活。
+
+# 16. Data Visualization
 
