@@ -1874,7 +1874,7 @@ for i in my_set:
 >    ```python
 >    def greet():
 >        return "Hello!"
->             
+>                   
 >    say_hello = greet()
 >    print(say_hello)  # 输出: Hello!
 >    ```
@@ -2051,13 +2051,13 @@ pirnt(output)
 >            f()
 >            print("After function call")
 >        return wrapper
->             
+>                   
 >    @simple_decorator
 >    def say_hello():
 >        print("Hello!")
->             
+>                   
 >    say_hello()
->             
+>                   
 >    ```
 >
 >    输出：
@@ -2066,7 +2066,7 @@ pirnt(output)
 >    Before function call
 >    Hello!
 >    After function call
->             
+>                   
 >    ```
 >
 >    在上面的例子中，装饰器`simple_decorator`修改了`say_hello`函数的行为，使其在调用前后都打印了额外的信息。
@@ -2741,3 +2741,342 @@ def matrix_transpose(m):
 ## 11.3 2D-Array with CSV
 
 ![image-20231003200814131](https://images.wu.engineer/images/2023/10/03/image-20231003200814158.png)
+
+# 12. Object Oriented Programming (OOP)
+
+## 12.1 Class and Instance
+
+- Class:
+  - Specifies the common behavior of entities
+  - a *blueprint* that defines properties and behavior of an object
+- Instance:
+  - A particular object of entity of a given class
+  - A concrete, usable object created from the blueprint
+
+![image-20231004135135588](https://images.wu.engineer/images/2023/10/04/image-20231004135135588.png)
+
+```python
+>>> s = 'abc'
+>>> type(s)
+<class 'str'>
+```
+
+- The variable `s` above is an **instance** of the class `str`
+- Each instance will store different values
+
+> **class:**
+>
+> 使用class关键字定义一个类，后跟类名和冒号。类名通常采用驼峰命名法。
+> ```python
+> class MyClass:
+>     pass
+> ```
+> **instance:**
+> 类的对象或实例是根据类定义创建的实体。可以使用类名和括号来创建它，就像调用函数一样。
+>
+> ```python
+> obj = MyClass("Some value")
+> ```
+>
+> **attribute:**
+>
+> 属性是与对象关联的变量。它们表示对象的状态或数据。
+>
+> 类中可以有两种类型的属性：实例属性和类属性。
+>
+> 实例属性：与特定的对象实例关联。每个对象实例都可以有其自己的值。
+>
+> ```python
+> class MyClass:
+>     def __init__(self, value):
+>         self.instance_attribute = value
+> ```
+> 类属性：与类自身关联，而不是实例。所有对象实例共享同一个类属性。
+>
+> ```python
+> class MyClass:
+>     class_attribute = "I'm a class attribute"
+> ```
+> **method:**
+>
+> 方法是与对象关联的函数，定义了对象可以执行的操作。
+> 类的方法需要至少一个参数，通常命名为self，它引用对象实例本身。
+> ```python
+> class MyClass:
+>     def my_method(self):
+>         print("This is a method!")
+> ```
+>
+> **构造函数 `__init__`:**
+>
+> 当创建类的新对象时，__init__ 方法会自动调用。它常用于初始化对象的属性。
+> ```python
+> class MyClass:
+>     def __init__(self, value):
+>         self.attribute = value
+> ```
+
+```python
+class StudentRecord():
+    # __init__ 函数类似于C++中的构造函数，当创建类的新对象时，构造函数会自动调用。
+    def __init__(self):
+        self.name = ''
+        self.sn = ''
+        self.gender = ''
+        self.year = 0
+        self.eng = 0
+        self.math = 0
+        self.sci = 0
+        self.ss = 0
+```
+
+- In a student record, we want to store name, student number...
+    - These are created automatically using the class above if a new object is created
+
+### `self` variable
+
+- Every class definition has access to a `self` variable
+- `self` is a reference to the entire instance
+- `self` variable will not disappear when the function exits
+- The variable “name” will disappear after the completion of the function `__init__()`
+- The variable “self.name” will remain after the completion of the function `__init__()`
+
+### `__init__()`
+
+- `def __init__(self):`
+  - called when the object is first initialized
+  - `self` argument is a reference to the object calling the method
+  - It allows the method to reference properties and other methods of the class
+- Special methods have `__` in front and behind the name
+
+### Create an Instance
+
+```python
+alan = StudentRecord()
+alan.name
+```
+
+- When you create a new instance, the **constructor** function is called
+  - aka., `__init__()`
+
+### Store values into an instance
+
+```python
+alan.name = 'Alan'
+alan.sn = 'A1000001A'
+alan.gender = 'M'
+alan.eng = 90
+alan.math = 100
+alan.sci = 80
+alan.ss = 10
+```
+
+### Initialization the object through constructor
+
+```python
+class BankAccount():
+    def __init__(self, name, balance):
+        self.name = name
+        self.balance = balance
+        
+myAcc = BankAccount('Alan', 1000)
+johnAcc = BankAccount('John Wick', 100000000)
+myAcc.name # Output: Alan
+myAcc.balance # Output: 1000
+myAcc.balance += 999
+myAcc.balance # Output: 1999
+```
+
+## 12.2 Methods
+
+```python
+class BankAccount():
+    def __init__(self, name, balance):
+        self.name = name
+        self.balance = balance
+    def withdraw(self, amount):
+        if self.balance < amount:
+            print(f"Money not enough! You do not have ${amount}")
+            return 0
+        else:
+            self.balance -= amount
+            return amount
+    def showBalance(self):
+        print(f'Your balance is ${self.balance}')
+```
+
+```python
+>>> myAcc = BankAccount('Alan', 1000)
+>>> myAcc.showBalance()
+Your balance is $1000
+>>> myAcc.withdraw(123)
+123
+>>> myAcc.showBalance()
+Your balance is $877
+>>> myAcc.withdraw(99999)
+Money not enough! You do not have $99999
+0
+```
+
+## 12.3 Inheritance
+
+> 一个类可以继承另一个类的属性和方法，使代码重用变得简单。
+> ```python
+> class ParentClass:
+>     pass
+> 
+> class ChildClass(ParentClass):
+>     pass
+> ```
+
+```python
+class Vehicle:
+    def __init__(self, pos):
+        self.pos = pos
+        self.velocity = (0,0)
+    def setVelocity(self, vx, vy):
+        self.velocity = (vx, vy)
+    def move(self):
+        self.pos = (self.pos[0] + self.velocity[0], self.pos[1] + self.velocity[1])
+        print(f"Move to {self.pos}")
+
+class Sportscar(Vehicle):
+    def turnOnTurbo(self):
+        print("VROOOOOOM...")
+        self.velocity = (self.velocity[0]*2, self.velocity[1]*2)
+        print(f'Velocity increased to {self.velocity}')
+```
+
+### Change the initialization of the inheritance
+
+1. Overriding. Redefining the method will override the one in Vehicle
+2. Calling super class. Redefine a constructor, but call the constructor in super() (Vehicle class) instead
+
+```python
+class Lorry(Vehicle):
+    # Overriding
+    def __init__(self, pos):
+        self.pos = pos
+        self.velocity = (0,0)
+        self.cargo = []
+        
+class Lorry(Vehicle):
+    # Call super class
+    def __init__(self, pos):
+        super().__init__(pos)
+        self.cargo = []
+```
+
+### `super()`
+
+A way to access a method in your parent/higher classes
+
+- Usually we prefer use `super()` because no duplication of code
+- Calling super class: redefine a constructor, but call the constructor in `super()` instead
+
+> super() 函数在Python中用于调用父类（或超类）的方法。它常用于两种情况：覆盖类方法时，以及多重继承中。使用 super() 可以确保父类中的适当方法被调用，特别是在存在多个继承层次或多重继承的情况下。
+>
+> 为什么要使用 super()?
+> 当你在子类中重写某个方法，但仍然希望调用父类中的原始版本时，super() 就派上用场了。最常见的情况是在子类的 __init__ 方法中，你可能希望扩展或修改父类的初始化行为，而不是完全替换它。
+>
+> 在条件允许的情况下，优先使用super函数而不是重载
+
+### Overriding
+
+- When you re-define a same method that was in your parent class
+- You own class will call your new re-defined method
+  - Instead of your parent’s one
+
+![image-20231004141616027](https://images.wu.engineer/images/2023/10/04/image-20231004141616027.png)
+
+## 12.4 Multiple Inheritance
+
+- We have a vehicle and a cannon class, now we want to create a tank class, which is inheritance from both vehicle and cannon class
+
+![image-20231004141809455](https://images.wu.engineer/images/2023/10/04/image-20231004141809455.png)
+
+- Which constructor should tank class call?
+
+```python
+class Cannon:
+	def __init__(self):
+		self.numAmmo = 0
+			
+class Vehicle:
+	def __init__(self):
+		self.pos = pos
+		self.velocity = (0,0)
+```
+
+- Wee need to call BOTH:
+
+```python
+class Tank(Vehicle, Cannon):
+	def __init__(self):
+		Vehicle.__init__(self, pos)
+		Cannon.__init__(self)
+```
+
+- In case we want to use use Cannon and Bisarca class to build BattleBisarca class, which `load()` function should we called from? Bisarca or Lorry?
+
+![image-20231004142145869](https://images.wu.engineer/images/2023/10/04/image-20231004142145869.png)
+
+- The nearest one will be called
+
+![image-20231004142201808](https://images.wu.engineer/images/2023/10/04/image-20231004142201808.png)
+
+- Complication arises when the same method is available in two distinct superclasses
+
+- Diamond inheritance
+
+  > “Diamond inheritance”（有时也被称为“diamond problem”或“diamond paradox”）是一个在面向对象编程中的常见问题，特别是在支持多重继承的语言中，如C++。这个问题描述了当两个基类继承自一个公共基类，然后另一个类从这两个派生类继承时，可能会出现的继承冲突。
+
+![image-20231004142304906](https://images.wu.engineer/images/2023/10/04/image-20231004142304906.png)
+
+- MI causes more trouble sometime because you may call the unexpected method in a complicated inheritance structure
+- Recommendation is, only use MI if the parents are very different
+  - e.g. Vehicle and Cannon
+  - Or Tablet + calling device = smart phone
+
+## 12.5 Private vs Public
+
+- add `__` before the method name to convert the method from public to private
+- The function can be used inside of the class but cannot be called from the outside
+
+![image-20231004142739350](https://images.wu.engineer/images/2023/10/04/image-20231004142739350.png)
+
+- However, you can still add `_` and the class name to access it
+
+```python
+>>> myDadTruck._Bisarca__convertCargo()
+['Sportcar', 'Lorry']
+```
+
+### Private Methods
+
+- Originally, in  a low of other OOP Languages, a private method/variable will NOT be accessible by anyone other than the class itself
+
+- The purpose is to prevent any programmers to access the method/variable in a wrong way
+
+  - E.g. directly change the balance of a bank account like
+
+    ```python
+    myAcc.balance = 10000000
+    ```
+
+- However, Python does not have that “full protection”
+
+## 12.6 Conclusions
+
+### Benefits of OOP
+
+- Pros:
+  - Simplification of complex, possibly hierarchical structures
+  - Easy reuse of code
+  - Easy code modifiability
+  - Intuitive methods
+  - Hiding of details through message passing and polymorphism
+- Cons:
+  - Overhead associated with the creation of classes, methods and instances
+
+![image-20231004143243118](https://images.wu.engineer/images/2023/10/04/image-20231004143243118.png)
