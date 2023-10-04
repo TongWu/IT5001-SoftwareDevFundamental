@@ -3080,3 +3080,12 @@ class Tank(Vehicle, Cannon):
   - Overhead associated with the creation of classes, methods and instances
 
 ![image-20231004143243118](https://images.wu.engineer/images/2023/10/04/image-20231004143243118.png)
+
+> Python 支持 OOP，但它并不是一个“纯粹”的面向对象编程语言。Python 也支持其他编程范式，例如过程式编程和函数式编程。这使得 Python 成为一种多范式的编程语言，允许开发者选择适合他们问题的编程风格。
+
+# 13. Image Processing (Optional)
+
+
+
+# 14. Order of Growth and Memoization
+
