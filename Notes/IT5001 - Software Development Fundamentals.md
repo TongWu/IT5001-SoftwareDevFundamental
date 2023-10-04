@@ -3089,3 +3089,198 @@ class Tank(Vehicle, Cannon):
 
 # 14. Order of Growth and Memoization
 
+## 14.1 Fibonacci
+
+> 对于算法，"running time"（运行时间）和"running space"（运行空间）是两个关键的度量指标，用于评估算法的效率。
+>
+> 1. **Running Time (运行时间)**：
+>    - 描述了算法执行所需的时间，常常与输入大小（通常用 �*n* 表示）相关。
+>    - 运行时间经常使用“大O表示法”（Big O notation）来描述，它给出了算法性能的上界。
+>    - 常见的时间复杂度有：�(1)*O*(1)（常数时间）、�(log⁡�)*O*(log*n*)（对数时间）、�(�)*O*(*n*)（线性时间）、�(�log⁡�)*O*(*n*log*n*)、�(�2)*O*(*n*2)、�(�3)*O*(*n*3) 以及 �(2�)*O*(2*n*)，等等。
+> 2. **Running Space (运行空间)**：
+>    - 描述了算法在执行过程中所需的额外存储空间（不包括输入数据本身的存储空间）。
+>    - 与运行时间类似，运行空间通常也使用“大O表示法”来描述。
+>    - 常见的空间复杂度有：�(1)*O*(1)（常数空间）、�(log⁡�)*O*(log*n*)、�(�)*O*(*n*)（线性空间）、等等。
+>
+> 算法的运行时间和运行空间如何增长，取决于算法的设计和实现。某些算法可能会牺牲空间来获得更快的速度（即使用更多的内存来减少计算时间），而其他算法可能会做相反的选择。
+
+1. **递归方法**：
+   - **时间复杂度**：简单的递归算法具有指数级的时间复杂度，即 $O(2^n)$。这是因为每一个元素都被计算两次。
+   - **空间复杂度**：由于递归的深度是 $n$，空间复杂度为$O(n)$。这主要是因为每次递归调用都会在调用栈上消耗空间。
+2. **循环方法 (迭代)**：
+   - **时间复杂度**：循环方法通常使用两个变量来保存前两个斐波那契数，并用它们来计算下一个斐波那契数。这种方法只需要线性的时间，即 $O(n)$。
+   - **空间复杂度**：由于我们只需要保存前两个斐波那契数，空间复杂度为常数，即 $O(1)$。
+
+![image-20231004144604165](https://images.wu.engineer/images/2023/10/04/image-20231004144604165.png)
+
+## 14.2 Searching in a list of $n$ items
+
+### Linear search
+
+- \# comparison proportional to $n$
+
+- Because in average, the expected number search is $n/2$
+
+### Binary Search
+
+- \# comparisons proportional to $log(n)$
+- Because we divide the list into half for at most $log(n)$ items
+
+> **二分搜索**（也称为二分查找或折半查找）是一种在排序数组中查找特定元素的算法。每次迭代，它都会将搜索的区间减半，直到找到所需的元素或搜索区间为空。
+>
+> 1. **Running Time (运行时间)**：
+>
+>    - **时间复杂度**：每次都将搜索区间减半，因此需要 log⁡�log*n* 次迭代来缩小到只包含一个元素的区间。因此，时间复杂度是 $O(log(n))$。
+>
+> 2. **Running Space (运行间)**：
+>
+>    - **空间复杂度**：二分搜索算法不需要额外存储整个数组或其部分，只需要几个指针或索引来跟踪当前的搜索范围（例如，low, high）。因此，空间复杂度是$O(1)$，也就是常数空间。
+>
+> 3. **为什么时间复杂度是 $O(log(n))$？**
+>
+>    每次迭代，我们都会将搜索的范围减少一半。这意味着，经过第一次迭代后，搜索范围减少到原来的一半；第二次迭代后，减少到原来的四分之一；第三次迭代后，减少到原来的八分之一，依此类推。
+>
+>    假设我们最多需要 $k$ 次迭代来找到目标值或确定目标值不在数组中。在这 $k$ 次迭代后，搜索范围最多被减少到原始大小的 $1/2^k$。这意味着原始大小 $n$ 最多减少到 $n/2^k$。
+>
+>    为了确定 $k$ 的最大值，我们可以设 $n/2^k=1$（当搜索范围减少到1时，搜索结束）。从中解出 $k$，我们得到 $k=log_2n$。
+>
+>    因此，我们最多需要 $log_2n$ 次迭代，所以二分搜索的时间复杂度是 $O(log\ n)$。
+
+### Bubble Sort & Merge Sort
+
+```python
+def bubble(my_list):
+    for i in range(len(my_list)-1):
+        if my_list[i] > my_list[i+1]:
+            my_list[i], my_list[i+1] = my_list[i+1], my_list[i]
+            
+def bubbleSort(my_list):
+    for i in range(len(my_list)-1):
+        bubble(my_list)
+        
+my_list_1 = [38,2,10,3,1]
+bubbleSort(my_list_1)
+print(my_list_1)
+```
+
+> 冒泡排序是一种简单的排序算法，其基本思想是：通过比较相邻的两个元素并进行交换（如果它们的顺序是错误的），从而将最大（或最小）的元素“浮动”到其正确的位置。这个过程重复执行，每次减少需要考虑的未排序元素的数量，直到整个列表被排序。
+>
+> 1. `bubble` 函数：
+>    - 它遍历列表，并对相邻的两个元素进行比较。如果当前元素大于其下一个元素，则交换它们。这确保了在经过一次完整的迭代后，最大的元素会被移动到列表的末尾。
+>    - 请注意，这个函数只执行一次迭代，并不保证完全排序整个列表。
+> 2. `bubbleSort` 函数：
+>    - 它反复调用 `bubble` 函数，确保整个列表被排序。
+>    - 对于长度为 $n$ 的列表，它会调用 `bubble` 函数 �−1*n*−1 次，确保每个元素都到达其正确的位置。
+>
+> 现在，考虑你提供的 `my_list_1` 示例：
+>
+> 初始列表为: [38,2,10,3,1]
+>
+> - **第1次**调用 `bubble` 后: [2,10,3,1,38]
+> - **第2次**调用 `bubble` 后: [2,3,1,10,38]
+> - **第3次**调用 `bubble` 后: [2,1,3,10,38]
+> - **第4次**调用 `bubble` 后: [1,2,3,10,38]
+>
+> 在4次迭代后，列表被完全排序。因此，`print(my_list_1)` 的输出是: [1,2,3,10,38]
+>
+> 要注意的是，虽然这个冒泡排序实现是正确的，但它不是最优的。在最坏情况下，冒泡排序的时间复杂度为 $O(n^2)$，其中 $n$ 是列表的长度。这意味着，对于大的输入数据，这个算法可能会变得非常慢。
+
+```python
+def merge_sort(lst):
+    if len(lst) <= 1:
+        return lst
+
+    # 分解步骤
+    mid = len(lst) // 2
+    left = lst[:mid]
+    right = lst[mid:]
+
+    # 递归排序
+    left = merge_sort(left)
+    right = merge_sort(right)
+
+    # 合并步骤
+    return merge(left, right)
+
+def merge(left, right):
+    merged = []
+    left_idx, right_idx = 0, 0
+
+    while left_idx < len(left) and right_idx < len(right):
+        if left[left_idx] < right[right_idx]:
+            merged.append(left[left_idx])
+            left_idx += 1
+        else:
+            merged.append(right[right_idx])
+            right_idx += 1
+
+    # 如果有剩余的元素，将它们添加到结果中
+    while left_idx < len(left):
+        merged.append(left[left_idx])
+        left_idx += 1
+    while right_idx < len(right):
+        merged.append(right[right_idx])
+        right_idx += 1
+
+    return merged
+```
+
+> **归并排序（Merge Sort）**是一种分而治之的排序算法。它的基本思想是将一个大问题分解成若干小问题，解决这些小问题，然后将它们的结果合并以解决原始的大问题。具体到排序问题，归并排序将一个大列表分成两个（或更多的）子列表，递归地排序这些子列表，然后合并它们以产生一个完全排序的列表。
+>
+> 以下是归并排序的基本步骤：
+>
+> 1. **分解**：将当前列表分成两个（大致）相等长度的子列表。
+> 2. **递归排序**：递归地对这两个子列表进行归并排序。
+> 3. **合并**：将两个已排序的子列表合并成一个单一的已排序列表。
+>
+> **合并**是归并排序中的关键步骤。当我们有两个已排序的子列表时，我们可以通过线性时间的操作来合并它们。
+>
+> **时间复杂度**： 归并排序的时间复杂度为 $O(nlog\ n)$，其中 $n$ 是要排序的元素数量。这使得归并排序在大多数情况下都比如冒泡排序、插入排序或选择排序等简单排序算法更有效。
+>
+> **空间复杂度**： 由于归并排序在合并过程中需要额外的空间来存储左右子列表的拷贝，其空间复杂度为$ O(n)$，其中 $n$ 是要排序的元素数量。
+
+![image-20231004150005094](https://images.wu.engineer/images/2023/10/04/image-20231004150005094.png)
+
+## 14.3 Optimization
+
+### Memoization
+
+![image-20231004150054034](https://images.wu.engineer/images/2023/10/04/image-20231004150054034.png)
+
+- Create a dictionary to remember the answer if `fibm(n)` is computed before
+- If the `ans` was computed before, get the answer from the dictionary
+- Otherwise, compute the `ans` and put it into the dictionary for later use
+
+```python
+fibans = {}
+
+def fibm(n):
+	if n in fibans.keys():
+		return fibans[n]
+	if (n == 0):
+		ans = 0
+	elif (n == 1):
+		ans = 1
+	else:
+		ans = fibm(n-1) + fibm(n-2)
+	fibans[n] = ans
+	return ans
+```
+
+### Recursion Removal
+
+- Store all the answers in an array
+- Add new `fib(i)`, as `fib(i-1) + fib(i-2)`
+
+- And only keep `fib(n-1)` and `fib(n-2)`
+
+```python
+def fibi(n):
+	if n<3:
+		return 1
+	fibminus1, fibminus2 = 1,1
+	for i in range(3, n+1):
+		fibminus2, fibminus1 = fibminus1, fibminus1 + fibminus2
+	return fibminus1
+```
+
