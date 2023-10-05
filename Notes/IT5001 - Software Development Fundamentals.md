@@ -3707,3 +3707,73 @@ fig.savefig('plot.pdf')
 
 # 17. Algorithms (Optional)
 
+
+
+# 18. Programming Design
+
+## 18.1 Manage Complexity
+
+### Establish Level of Complexity
+
+![image-20231005164751076](https://images.wu.engineer/images/2023/10/05/image-20231005164751076.png)
+
+## 18.2 Make Good Abstraction
+
+### 1. Makes it more natural to think
+
+![image-20231005164913415](https://images.wu.engineer/images/2023/10/05/image-20231005164913415.png)
+
+### 2. Makes program easier to understand
+
+![image-20231005164935522](https://images.wu.engineer/images/2023/10/05/image-20231005164935522.png)
+
+### 3. Captures Common Patterns
+
+![image-20231005165005357](https://images.wu.engineer/images/2023/10/05/image-20231005165005357.png)
+
+### 4. Allows for code reuse
+
+![image-20231005165022073](https://images.wu.engineer/images/2023/10/05/image-20231005165022073.png)
+
+### 5. Hides irrelevant details (blackbox)
+
+![image-20231005165045036](https://images.wu.engineer/images/2023/10/05/image-20231005165045036.png)
+
+### 6. Separates specifications from implementations
+
+![image-20231005165106129](https://images.wu.engineer/images/2023/10/05/image-20231005165106129.png)
+
+### 7. Makes debugging easier
+
+![image-20231005165130860](https://images.wu.engineer/images/2023/10/05/image-20231005165130860.png)
+
+## 18.3 Program Design Top-down Approach
+
+### Sequence of writing
+
+![image-20231005165208271](https://images.wu.engineer/images/2023/10/05/image-20231005165208271.png)
+
+### Formulate the problem
+
+![image-20231005165308046](https://images.wu.engineer/images/2023/10/05/image-20231005165308046.png)
+
+![image-20231005165303040](https://images.wu.engineer/images/2023/10/05/image-20231005165303040.png)
+
+![image-20231005165314273](https://images.wu.engineer/images/2023/10/05/image-20231005165314273.png)
+
+![image-20231005165320899](https://images.wu.engineer/images/2023/10/05/image-20231005165320899.png)
+
+![image-20231005165327678](https://images.wu.engineer/images/2023/10/05/image-20231005165327678.png)
+
+### Coping with changes
+
+- What if the starting fare is increased to $3.2?
+- What if 385m is increased to 400m?
+
+### Avoid magic numbers
+
+- It is a terrible idea to hardcode constants
+  - Hard to make changes in the future
+- Define abstractions to hide them
+
+![image-20231005165459120](https://images.wu.engineer/images/2023/10/05/image-20231005165459120.png)
