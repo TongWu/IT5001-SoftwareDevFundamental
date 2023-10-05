@@ -1874,7 +1874,7 @@ for i in my_set:
 >    ```python
 >    def greet():
 >        return "Hello!"
->                      
+>                         
 >    say_hello = greet()
 >    print(say_hello)  # 输出: Hello!
 >    ```
@@ -2051,13 +2051,13 @@ pirnt(output)
 >            f()
 >            print("After function call")
 >        return wrapper
->                      
+>                         
 >    @simple_decorator
 >    def say_hello():
 >        print("Hello!")
->                      
+>                         
 >    say_hello()
->                      
+>                         
 >    ```
 >
 >    输出：
@@ -2066,7 +2066,7 @@ pirnt(output)
 >    Before function call
 >    Hello!
 >    After function call
->                      
+>                         
 >    ```
 >
 >    在上面的例子中，装饰器`simple_decorator`修改了`say_hello`函数的行为，使其在调用前后都打印了额外的信息。
@@ -3534,8 +3534,8 @@ __main__.MyError: 'oops!'
 >
 > ```python
 > def add_positive_numbers(a, b):
->     assert a > 0 and b > 0, "Both numbers should be positive"
->     return a + b
+>    	assert a > 0 and b > 0, "Both numbers should be positive"
+>    	return a + b
 > ```
 >
 > 在上述函数中，`assert`语句检查两个数字是否都为正数。如果不是，它会引发一个`AssertionError`，并附带给定的错误消息 "Both numbers should be positive"。
@@ -3546,4 +3546,162 @@ __main__.MyError: 'oops!'
 > 2. 使用专门的异常处理机制（例如`try`/`except`块）更加明确和灵活。
 
 # 16. Data Visualization
+
+![image-20231005155338054](https://images.wu.engineer/images/2023/10/05/image-20231005155338054.png)
+
+## 16.1 Numpy
+
+- Create a list of numbers from 0 to pi(3.14) with split 0.1
+- Without Numpy:
+
+```python
+x = [i/100 for i in range(0,314)]
+```
+
+- With Numpy:
+
+```python
+import numpy as np
+x1 = np.arange(0, 3.14, 0.1)
+```
+
+- Split 100 elements for range(0,3.14) using Numpy:
+
+```python
+x2 = np.linspace(0,3.14,100)
+```
+
+## 16.2 Matplotlib
+
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+
+x2 = np.linspace(0,3.14,100)
+plt.plot(x2)
+plt.show()
+```
+
+![image-20231005160511253](https://images.wu.engineer/images/2023/10/05/image-20231005160511253.png)
+
+### Plotting cos(x)
+
+- Without Numpy:
+
+```python
+y = [cos(i) for i in x1]
+```
+
+- With Numpy:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x1 = np.linspace(0,3.14,100)
+y1 = np.cos(x1)
+plt.plot(y1)
+plt.show()
+```
+
+### More Curves
+
+![image-20231005162030381](https://images.wu.engineer/images/2023/10/05/image-20231005162030381.png)
+
+![image-20231005162036979](https://images.wu.engineer/images/2023/10/05/image-20231005162036979.png)
+
+![image-20231005162043328](https://images.wu.engineer/images/2023/10/05/image-20231005162043328.png)
+
+![image-20231005162053644](https://images.wu.engineer/images/2023/10/05/image-20231005162053644.png)
+
+![image-20231005162107939](https://images.wu.engineer/images/2023/10/05/image-20231005162107939.png)
+
+### Multiple Figures
+
+```python
+# Plot sin and cos functions
+plt.subplot(211)
+plt.plot(x, y1, "-g")
+plt.title('Sine Curve')
+plt.subplot(212)
+plt.plot(x, y2, "--b")
+plt.title('Cosine Curve')
+
+# Limit the y axis to -1.5 to 1.5
+plt.ylim(-1.5,1.5)
+plt.show()
+```
+
+![image-20231005162258721](https://images.wu.engineer/images/2023/10/05/image-20231005162258721.png)
+
+![image-20231005162304387](https://images.wu.engineer/images/2023/10/05/image-20231005162304387.png)
+
+![image-20231005162315459](https://images.wu.engineer/images/2023/10/05/image-20231005162315459.png)
+
+### Bar Chart
+
+```python
+N = 18
+x = [i for i in range(0, N+1)]
+y = [nChooseK(N,i) for i in range(0,N+1)]
+
+plt.bar(x,y)
+plt.show()
+```
+
+![image-20231005162425105](https://images.wu.engineer/images/2023/10/05/image-20231005162425105.png)
+
+```python
+plt.barh(x,y)
+plt.show()
+```
+
+![image-20231005162444800](https://images.wu.engineer/images/2023/10/05/image-20231005162444800.png)
+
+### Histogram
+
+- Similar to bar chart, but a histogram groups numbers into ranges
+- Bar charts has gap, but Histogram has no gaps
+
+![image-20231005162623860](https://images.wu.engineer/images/2023/10/05/image-20231005162623860.png)
+
+```python
+N = 100000
+def roll_dice():
+	return random.randint(1,6)
+	
+dice_stat = []
+for i in range(N):
+	dice_stat.append(roll_dice()+roll_dice()+roll_dice())
+    
+plt.hist(dice_stat, 16) # 16 for number of bins
+plt.show()
+```
+
+![image-20231005162835634](https://images.wu.engineer/images/2023/10/05/image-20231005162835634.png)
+
+### Pie Chart
+
+```python
+labels = ['Python', 'Java', 'C++', 'C#', 'C', 'JavaScript']
+sizes = [26.7, 22.6, 9.9, 9.4, 7.37, 6.9, 5.9, 11.23]
+
+plt.pie(sizes, shadow=True, startangle=90)
+plt.legend(labels, loc="best")
+
+plt.axis('equal') # Otherwise, becomes "oval" chart
+plt.title('Programming Languages Used in 2016')
+plt.tight_layout()
+plt.show
+```
+
+![image-20231005163125737](https://images.wu.engineer/images/2023/10/05/image-20231005163125737.png)
+
+### Saving a graph
+
+```python
+fig.savefig('plot.png') # or,
+fig.savefig('plot.pdf')
+# Or any format that is supported by matplotlib
+```
 
