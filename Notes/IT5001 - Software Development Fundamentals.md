@@ -3705,3 +3705,5 @@ fig.savefig('plot.pdf')
 # Or any format that is supported by matplotlib
 ```
 
+# 17. Algorithms (Optional)
+
