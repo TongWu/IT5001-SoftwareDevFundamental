@@ -1843,7 +1843,7 @@ for i in my_set:
 >
 > ```python
 > def greet():
->     return "Hello!"
+>    	return "Hello!"
 > 
 > say_hello = greet
 > print(say_hello())  # 输出: Hello!
@@ -1874,7 +1874,7 @@ for i in my_set:
 >    ```python
 >    def greet():
 >        return "Hello!"
->                         
+>                            
 >    say_hello = greet()
 >    print(say_hello)  # 输出: Hello!
 >    ```
@@ -1972,9 +1972,9 @@ pirnt(output)
 >
 > ```python
 > def power(n):
->     def compute(x):
->         return x ** n
->     return compute
+>    	def compute(x):
+>        	return x ** n
+>    	return compute
 > 
 > square = power(2)
 > cube = power(3)
@@ -2051,13 +2051,13 @@ pirnt(output)
 >            f()
 >            print("After function call")
 >        return wrapper
->                         
+>                            
 >    @simple_decorator
 >    def say_hello():
 >        print("Hello!")
->                         
+>                            
 >    say_hello()
->                         
+>                            
 >    ```
 >
 >    输出：
@@ -2066,7 +2066,7 @@ pirnt(output)
 >    Before function call
 >    Hello!
 >    After function call
->                         
+>                            
 >    ```
 >
 >    在上面的例子中，装饰器`simple_decorator`修改了`say_hello`函数的行为，使其在调用前后都打印了额外的信息。
@@ -2456,8 +2456,8 @@ Kiki 63
 >
 > ```python
 > with open('student_marks.txt') as f:
->     for line in f:
->         print(line.strip())
+>    	for line in f:
+>        	print(line.strip())
 > ```
 >
 > 通过这种方式，输出的结果不会有额外的换行符。
@@ -2769,7 +2769,7 @@ def matrix_transpose(m):
 > 使用class关键字定义一个类，后跟类名和冒号。类名通常采用驼峰命名法。
 > ```python
 > class MyClass:
->     pass
+>    	pass
 > ```
 > **instance:**
 > 类的对象或实例是根据类定义创建的实体。可以使用类名和括号来创建它，就像调用函数一样。
@@ -2788,14 +2788,14 @@ def matrix_transpose(m):
 >
 > ```python
 > class MyClass:
->     def __init__(self, value):
->         self.instance_attribute = value
+>        def __init__(self, value):
+>        	self.instance_attribute = value
 > ```
 > 类属性：与类自身关联，而不是实例。所有对象实例共享同一个类属性。
 >
 > ```python
 > class MyClass:
->     class_attribute = "I'm a class attribute"
+>        class_attribute = "I'm a class attribute"
 > ```
 > **method:**
 >
@@ -2803,8 +2803,8 @@ def matrix_transpose(m):
 > 类的方法需要至少一个参数，通常命名为self，它引用对象实例本身。
 > ```python
 > class MyClass:
->     def my_method(self):
->         print("This is a method!")
+>        def my_method(self):
+>        	print("This is a method!")
 > ```
 >
 > **构造函数 `__init__`:**
@@ -2812,8 +2812,8 @@ def matrix_transpose(m):
 > 当创建类的新对象时，__init__ 方法会自动调用。它常用于初始化对象的属性。
 > ```python
 > class MyClass:
->     def __init__(self, value):
->         self.attribute = value
+>    	def __init__(self, value):
+>        	self.attribute = value
 > ```
 
 ```python
@@ -2923,10 +2923,10 @@ Money not enough! You do not have $99999
 > 一个类可以继承另一个类的属性和方法，使代码重用变得简单。
 > ```python
 > class ParentClass:
->     pass
+>    	pass
 > 
 > class ChildClass(ParentClass):
->     pass
+>    	pass
 > ```
 
 ```python
