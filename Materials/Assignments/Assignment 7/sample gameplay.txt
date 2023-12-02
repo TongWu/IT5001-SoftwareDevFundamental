@@ -1,0 +1,462 @@
+>>> gameStart(800)
+Your enemy will be:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        800|       1200
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         50|           
+
+Your current team:
+(Currently no member in the team now)
+
+You have 800 gold currently
+Choices:
+1: Fighter (cost: 100)
+2: Mage (cost: 200)
+3: Berserker (cost: 200)
+4: ArchMage (cost: 600)
+5: Necromancer (cost: 400)
+Input a choice from 1 to 5: 1
+
+Your current team:
+Members:   |    Fighter
+Hitpoints: |       1200
+Strength:  |        100
+Max. Mana: |           
+Currnet M: |           
+
+You have 700 gold currently
+Choices:
+1: Fighter (cost: 100)
+2: Mage (cost: 200)
+3: Berserker (cost: 200)
+4: ArchMage (cost: 600)
+5: Necromancer (cost: 400)
+Input a choice from 1 to 5: 2
+
+Your current team:
+Members:   |    Fighter|       Mage
+Hitpoints: |       1200|        800
+Strength:  |        100|           
+Max. Mana: |           |         50
+Currnet M: |           |         50
+
+You have 500 gold currently
+Choices:
+1: Fighter (cost: 100)
+2: Mage (cost: 200)
+3: Berserker (cost: 200)
+4: ArchMage (cost: 600)
+5: Necromancer (cost: 400)
+Input a choice from 1 to 5: 5
+
+Your current team:
+Members:   |    Fighter|       Mage|Necromancer
+Hitpoints: |       1200|        800|        800
+Strength:  |        100|           |           
+Max. Mana: |           |         50|         50
+Currnet M: |           |         50|         50
+
+You have 100 gold currently
+Choices:
+1: Fighter (cost: 100)
+2: Mage (cost: 200)
+3: Berserker (cost: 200)
+4: ArchMage (cost: 600)
+5: Necromancer (cost: 400)
+Input a choice from 1 to 5: 1
+
+THE BATTLE STARTS!!!!!
+
+Round 1
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        800|        800|       1200
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         50|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        800|       1200
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         50|           
+
+Team A member 0 Fighter acts
+Hurt enemy 1 by damage 100.
+Berserker hurt with remaining hp 1100.
+
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        800|        800|       1200
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         50|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        800|       1100
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         50|           
+
+Team B member 0 ArchMage acts
+Strike enemy 3 with spell
+Fighter hurt with remaining hp 800.
+
+Round 2
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        800|        800|        800
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         50|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        800|       1100
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team A member 0 Fighter acts
+Hurt enemy 0 by damage 100.
+ArchMage hurt with remaining hp 700.
+
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        800|        800|        800
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         50|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        700|       1100
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team B member 1 Berserker acts
+Hurt enemy 2 by damage 100.
+Necromancer hurt with remaining hp 700.
+
+Round 3
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        800|        700|        800
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         50|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        700|       1100
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team A member 3 Fighter acts
+Hurt enemy 0 by damage 100.
+ArchMage hurt with remaining hp 600.
+
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        800|        700|        800
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         50|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        600|       1100
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team B member 1 Berserker acts
+Hurt enemy 1 by damage 100.
+Mage hurt with remaining hp 700.
+
+Round 4
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        700|        700|        800
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         50|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        600|       1100
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team A member 1 Mage acts
+Strike enemy 1 with spell
+Berserker hurt with remaining hp 700.
+
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        700|        700|        800
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         30|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        600|        700
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team B member 1 Berserker acts
+Hurt enemy 1 by damage 100.
+Mage hurt with remaining hp 600.
+
+Round 5
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        600|        700|        800
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         30|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        600|        700
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team A member 1 Mage acts
+Strike enemy 0 with spell
+ArchMage hurt with remaining hp 200.
+
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        600|        700|        800
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        200|        700
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team B member 1 Berserker acts
+Hurt enemy 3 by damage 100.
+Fighter hurt with remaining hp 700.
+
+Round 6
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        600|        700|        700
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        200|        700
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team A member 3 Fighter acts
+Hurt enemy 0 by damage 100.
+ArchMage hurt with remaining hp 100.
+
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        600|        700|        700
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        100|        700
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team B member 1 Berserker acts
+Hurt enemy 2 by damage 100.
+Necromancer hurt with remaining hp 600.
+
+Round 7
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        600|        600|        700
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |        100|        700
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team A member 3 Fighter acts
+Hurt enemy 0 by damage 100.
+ArchMage died!
+
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        600|        600|        700
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |          0|        700
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team B member 1 Berserker acts
+Hurt enemy 2 by damage 100.
+Necromancer hurt with remaining hp 500.
+
+Round 8
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        600|        500|        700
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |          0|        700
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team A member 3 Fighter acts
+Hurt enemy 1 by damage 100.
+Berserker hurt with remaining hp 600.
+
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        600|        500|        700
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |          0|        600
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team B member 1 Berserker acts
+Hurt enemy 1 by damage 100.
+Mage hurt with remaining hp 500.
+
+Round 9
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        500|        500|        700
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         50|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |          0|        600
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team A member 2 Necromancer acts
+Strike enemy 1 with spell
+Berserker hurt with remaining hp 200.
+
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        500|        500|        700
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         30|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |          0|        200
+Strength:  |           |        100
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team B member 1 Berserker acts
+Beserk mode! Attack double!
+Hurt enemy 3 by damage 200.
+Fighter hurt with remaining hp 500.
+
+Round 10
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        500|        500|        500
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         30|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |          0|        200
+Strength:  |           |        200
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team A member 0 Fighter acts
+Hurt enemy 1 by damage 100.
+Berserker hurt with remaining hp 100.
+
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        500|        500|        500
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         30|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |          0|        100
+Strength:  |           |        200
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team B member 1 Berserker acts
+Beserk mode! Attack double!
+Hurt enemy 3 by damage 200.
+Fighter hurt with remaining hp 300.
+
+Round 11
+Team A:
+Members:   |    Fighter|       Mage|Necromancer|    Fighter
+Hitpoints: |       1200|        500|        500|        300
+Strength:  |        100|           |           |        100
+Max. Mana: |           |         50|         50|           
+Currnet M: |           |         10|         30|           
+
+Team B:
+Members:   |   ArchMage|  Berserker
+Hitpoints: |          0|        100
+Strength:  |           |        200
+Max. Mana: |         50|           
+Currnet M: |         30|           
+
+Team A member 2 Necromancer acts
+Strike enemy 1 with spell
+Berserker died!
+Frist team won!
+Congraz! You won!
